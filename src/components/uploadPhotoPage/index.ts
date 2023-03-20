@@ -1,0 +1,1 @@
+export { UploadPhotoPage } from './uploadPhotoPage';

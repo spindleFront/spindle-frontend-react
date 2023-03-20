@@ -1,0 +1,28 @@
+@import '../../common/styles/variables.scss';
+
+.logo-container {
+  text-align: center;
+  margin-bottom: 148px;
+}
+
+.upload-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.upload-text {
+  display: flex;
+  align-items: center;
+  color: $brownTextColor;
+  opacity: 0.7;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 44px;
+  line-height: 52px
+}
+
+.dropzone {
+  width: 608px;
+  height: 608px;
+  border-radius: $borderRadius;
+}
