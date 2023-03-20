@@ -1,11 +1,5 @@
 @import '../../common/styles/variables';
 
-.header-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .info-container {
   @include grid-with-two-columns;
   margin-top: 140px;
@@ -17,15 +11,13 @@
 }
 
 .info {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+  @include flex-align-center;
   padding: 0 64px;
 
   &__header {
     margin-top: 20px;
     margin-bottom: 26px;
-    @include text-color;
+    color: $turquoiseWithOpacity;
     @include big-fonts;
   }
 
@@ -48,7 +40,7 @@
     &--circle {
       @include circle;
       @include big-fonts;
-      @include text-color;
+      color: $turquoiseWithOpacity;
       text-align: center;
       margin-right: 18px;
 
@@ -58,7 +50,7 @@
     }
 
     &--text {
-      color: $whiteColor;
+      @include white-text;
     }
   }
 }

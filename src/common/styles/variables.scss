@@ -1,11 +1,9 @@
 $mainBGColor: #1E1E1E;
 $brownTextColor: #F5971B;
 $whiteColor: #ffffff;
-
-@mixin text-color {
-  color: #42E8E0;
-  opacity: 0.7;
-}
+$warningColor: rgba(213, 54, 91, 0.7);
+$turquoiseColor: #42E8E0;
+$turquoiseWithOpacity: rgba(66, 232, 224, 0.7);
 
 @mixin white-text {
   font-weight: 700;
@@ -16,20 +14,20 @@ $whiteColor: #ffffff;
 }
 
 @mixin button-style {
-  border: 4px solid rgba(66, 232, 224, 0.7);
+  border: 4px solid $turquoiseWithOpacity;
   border-radius: 20px;
   @include big-fonts;
-  @include text-color;
+  color: $turquoiseWithOpacity;
   background-color: transparent;
 }
 
 @mixin border {
-  border: 4px solid rgba(66, 232, 224, 0.7);
+  border: 4px solid $turquoiseWithOpacity;
   border-radius: 20px;
 }
 
 @mixin circle {
-  border: 3px solid rgba(66, 232, 224, 0.7);
+  border: 3px solid $turquoiseWithOpacity;
   border-radius: 50%;
   height: 65px;
   width: 65px;
@@ -49,6 +47,12 @@ $whiteColor: #ffffff;
 @mixin grid-with-two-columns {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+}
+
+@mixin flex-align-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 $borderRadius: 20px;

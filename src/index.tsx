@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { UploadPhotoPage } from './components/uploadPhotoPage';
 import { AneuploidyDetection } from './components/aneuploidyDetection';
+import { Preclinical } from './components/preclinical';
 import './index.scss';
 
 const router = createBrowserRouter([
@@ -10,6 +11,10 @@ const router = createBrowserRouter([
 	{
 		path: '/detection',
 		element: <AneuploidyDetection />,
+	},
+	{
+		path: '/preclinical',
+		element: <Preclinical />,
 	},
 ]);
 

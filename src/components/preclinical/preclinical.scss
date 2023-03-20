@@ -1,0 +1,30 @@
+@import "../../common/styles/variables";
+
+.preclinical-container {
+  margin-top: 148px;
+  @include grid-with-two-columns;
+
+  .image-container {
+    @include square-size;
+    border-radius: $borderRadius;
+    border: 4px solid $warningColor;
+  }
+
+  .preclinical-info {
+    @include flex-align-center;
+    padding: 0 50px;
+  }
+
+  .warning-text {
+    @include big-fonts;
+    font-size: 44px;
+    color: $warningColor;
+    margin: 0 0 86px 40px;
+  }
+
+  .contact-us-button {
+    @include button-style;
+    padding: 20px 157px;
+    font-size: 40px;
+  }
+}

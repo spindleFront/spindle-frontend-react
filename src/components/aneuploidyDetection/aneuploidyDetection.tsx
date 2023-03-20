@@ -1,19 +1,11 @@
 import React from 'react';
-import { Logo } from '../logo';
-import { TryDemoButton } from '../tryDemoButton';
+import { Header } from '../header';
 import './aneuploidyDetection.scss';
 
 export const AneuploidyDetection = () => {
 	return (
 		<div className='container'>
-			<div className='header-container'>
-				<div>
-					<Logo />
-				</div>
-				<div>
-					<TryDemoButton />
-				</div>
-			</div>
+			<Header />
 			<div className='info-container'>
 				<div className='image-container'>img</div>
 				<div className='info'>
