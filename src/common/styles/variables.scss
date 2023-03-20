@@ -4,13 +4,22 @@ $whiteColor: #ffffff;
 $warningColor: rgba(213, 54, 91, 0.7);
 $turquoiseColor: #42E8E0;
 $turquoiseWithOpacity: rgba(66, 232, 224, 0.7);
+$borderRadius: 20px;
+$chevronBGColor: #26163E;
+$numbersColor: #F58A21;
+$numbersGradient: #F5951B;
+$landscapeColor: #D73655;
+
 
 @mixin white-text {
   font-weight: 700;
   font-size: 18px;
   line-height: 21px;
   color: $whiteColor;
+}
 
+@mixin circle-radius {
+  border-radius: 50%;
 }
 
 @mixin button-style {
@@ -28,7 +37,7 @@ $turquoiseWithOpacity: rgba(66, 232, 224, 0.7);
 
 @mixin circle {
   border: 3px solid $turquoiseWithOpacity;
-  border-radius: 50%;
+  @include circle-radius;
   height: 65px;
   width: 65px;
 }
@@ -55,4 +64,75 @@ $turquoiseWithOpacity: rgba(66, 232, 224, 0.7);
   align-items: center;
 }
 
-$borderRadius: 20px;
+@mixin align-justify-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin solid-circle-size {
+  width: 164px;
+  height: 164px;
+}
+
+@mixin problem-solid-circle {
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 33px;
+  color: $whiteColor;
+  @include solid-circle-size;
+  @include circle-radius;
+  @include align-justify-center;
+}
+
+@mixin dark-circle {
+  position: relative;
+  z-index: 100;
+  @include circle-radius;
+  background-color: $mainBGColor;
+  width: 400px;
+  height: 400px;
+  @include align-justify-center;
+}
+
+@mixin gradient-circle($gradient) {
+  width: 258px;
+  height: 258px;
+  background: $gradient;
+  @include circle-radius;
+  @include align-justify-center;
+}
+
+@mixin solid-circle($color) {
+  @include problem-solid-circle;
+  background-color: $color;
+}
+
+@mixin outer-circle {
+  position: absolute;
+  top: 24px;
+  left: 28px;
+}
+
+@mixin small-dot($color) {
+  position: absolute;
+  top: 190px;
+  left: 428px;
+  background-color: $color;
+  height: 14px;
+  width: 14px;
+  border-radius: 50%;
+}
+
+@mixin bottom-circle($color) {
+  position: absolute;
+  z-index: -10;
+  height: 156px;
+  width: 156px;
+  border: 1px solid $color;
+  border-radius: 50%;
+  top: 611px;
+  left: 116px;
+}
+
+

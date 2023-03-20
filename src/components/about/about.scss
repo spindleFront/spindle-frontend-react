@@ -1,1 +1,135 @@
 @import '../../common/styles/variables';
+
+.about-container {
+  margin: 102px 0 200px 0;
+  @include grid-with-two-columns;
+}
+
+.about-text {
+  @include big-fonts;
+  color: $turquoiseWithOpacity;
+  display: flex;
+  align-items: center;
+  padding: 0 75px;
+}
+
+.about-image-container {
+  border: 10px solid $turquoiseWithOpacity;
+  @include circle-radius;
+  @include square-size;
+  background-image: url("../../common/assets/icons/oocyte.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-left: 40px;
+}
+
+.embryos-problem {
+
+  &__header {
+    text-align: center;
+    @include big-fonts;
+    color: $whiteColor;
+  }
+}
+
+.problems-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.terms-card {
+  position: relative;
+
+  &__dark {
+    @include dark-circle;
+  }
+
+  &__gradient {
+    @include gradient-circle(linear-gradient(180deg, #07D3B7 0%, rgba(2, 207, 187, 0) 100%));
+  }
+
+  &__solid {
+    @include solid-circle($turquoiseWithOpacity);
+  }
+
+  &__outer-circle {
+    @include outer-circle;
+  }
+
+  &__small-dot {
+    @include small-dot($turquoiseColor);
+  }
+
+  &__bottom-circle {
+    @include bottom-circle($turquoiseColor)
+  }
+}
+
+.numbers-card {
+  position: relative;
+
+  &__dark {
+    @include dark-circle;
+  }
+
+  &__gradient {
+    @include gradient-circle(linear-gradient(180deg, $numbersGradient 0%, rgba(247, 113, 44, 0) 100%));
+  }
+
+  &__solid {
+    @include solid-circle($numbersGradient);
+    background: linear-gradient(180deg, $numbersGradient 0%, #F7722C 100%);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25)
+  }
+
+  &__outer-circle {
+    @include outer-circle;
+  }
+
+  &__small-dot {
+    @include small-dot($numbersColor);
+  }
+
+  &__bottom-circle {
+    @include bottom-circle($numbersColor)
+  }
+}
+
+.landscape-card {
+  position: relative;
+
+  &__dark {
+    @include dark-circle;
+  }
+
+  &__gradient {
+    @include gradient-circle(linear-gradient(180deg, #DC3755 0%, rgba(213, 54, 92, 0) 100%));
+  }
+
+  &__solid {
+    @include solid-circle($landscapeColor);
+  }
+
+  &__outer-circle {
+    @include outer-circle;
+  }
+
+  &__small-dot {
+    @include small-dot($landscapeColor);
+  }
+
+  &__bottom-circle {
+    @include bottom-circle($landscapeColor)
+  }
+}
+
+.bottom-chevron {
+  position: absolute;
+  z-index: -1;
+  height: 400px;
+  width: 320px;
+  background-color: $chevronBGColor;
+  border-radius: 23px;
+  top: 344px;
+  left: 39px;
+}
