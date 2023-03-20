@@ -1,0 +1,70 @@
+@import '../../common/styles/variables';
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.info-container {
+  @include grid-with-two-columns;
+  margin-top: 140px;
+}
+
+.image-container {
+  @include square-size;
+  @include border;
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 0 64px;
+
+  &__header {
+    margin-top: 20px;
+    margin-bottom: 26px;
+    @include text-color;
+    @include big-fonts;
+  }
+
+  &__description {
+    @include white-text;
+    text-align: center;
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin-top: 38px;
+
+    &--item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+
+    &--circle {
+      @include circle;
+      @include big-fonts;
+      @include text-color;
+      text-align: center;
+      margin-right: 18px;
+
+      &--number {
+        margin-top: 6px;
+      }
+    }
+
+    &--text {
+      color: $whiteColor;
+    }
+  }
+}
+
+.check-button {
+  @include button-style;
+  font-size: 40px;
+  padding: 20px 34px;
+}

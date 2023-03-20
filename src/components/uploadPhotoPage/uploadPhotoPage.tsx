@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { sentImage } from '../../services/sentImage';
+import { Logo } from '../logo';
 import './uploadPhotoPage.scss';
 
 export const UploadPhotoPage = () => {
@@ -9,7 +10,7 @@ export const UploadPhotoPage = () => {
 	return (
 		<div className='container'>
 			<div className='logo-container'>
-				<img alt='Spindle logo' src={require('../../common/assets/icons/logo.svg').default} />
+				<Logo />
 			</div>
 			<div>
 				<form className='upload-container'>

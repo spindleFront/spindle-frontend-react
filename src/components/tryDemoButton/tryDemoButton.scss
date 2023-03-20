@@ -1,0 +1,6 @@
+@import '../../common/styles/variables';
+
+.demo-button {
+  @include button-style;
+  padding: 17px 55px;
+}

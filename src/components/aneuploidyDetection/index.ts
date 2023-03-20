@@ -1,0 +1,1 @@
+export { AneuploidyDetection } from './aneuploidyDetection';
