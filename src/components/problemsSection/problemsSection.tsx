@@ -4,8 +4,7 @@ import './problemsSection.scss';
 export const ProblemsSectionMarkup = () => {
 	return (
 		<div className='problems-container'>
-
-			//Terms card
+			{/*Terms card*/}
 
 			<div className='terms-card'>
 				<div className='terms-card__dark'>
@@ -13,7 +12,7 @@ export const ProblemsSectionMarkup = () => {
 						<div className='terms-card__solid'>Terms</div>
 					</div>
 					<div className='terms-card__outer-circle'>
-						<img alt='image' src={require('../../common/assets/icons/termsCircle.svg').default}/>
+						<img alt='image' src={require('../../common/assets/icons/termsCircle.svg').default} />
 					</div>
 				</div>
 				<div className='terms-card__small-dot'></div>
@@ -29,7 +28,7 @@ export const ProblemsSectionMarkup = () => {
 				<div className='terms-card__bottom-circle'></div>
 			</div>
 
-			//Numbers Card
+			{/*Numbers Card*/}
 
 			<div className='numbers-card'>
 				<div className='numbers-card__dark'>
@@ -37,7 +36,7 @@ export const ProblemsSectionMarkup = () => {
 						<div className='numbers-card__solid'>Numbers</div>
 					</div>
 					<div className='numbers-card__outer-circle'>
-						<img alt='image' src={require('../../common/assets/icons/numbersCircle.svg').default}/>
+						<img alt='image' src={require('../../common/assets/icons/numbersCircle.svg').default} />
 					</div>
 				</div>
 				<div className='numbers-card__small-dot'></div>
@@ -45,7 +44,7 @@ export const ProblemsSectionMarkup = () => {
 					<ul className='chevron-list'>
 						<li className='chevron-list__item'>Aneuploid embryo rate for women age:</li>
 						<li className='chevron-list__item no-style'>
-							25-30 - 25% <br/> 40+ - 90%
+							25-30 - 25% <br /> 40+ - 90%
 						</li>
 						<li> 95% of aneuploid embryo doesn’t survive</li>
 					</ul>
@@ -53,7 +52,7 @@ export const ProblemsSectionMarkup = () => {
 				<div className='numbers-card__bottom-circle'></div>
 			</div>
 
-			// Landscape card
+			{/*Landscape card*/}
 
 			<div className='landscape-card'>
 				<div className='landscape-card__dark'>

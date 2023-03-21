@@ -24,11 +24,26 @@
 }
 
 .embryos-problem {
+  height: 900px;
+  margin-bottom: 100px;
 
   &__header {
     text-align: center;
     @include big-fonts;
     color: $whiteColor;
   }
+}
+
+.technology-schema {
+  width: 1238px;
+  height: 691px;
+  margin-bottom: 150px;
+  background-image: url("../../common/assets/icons/technologySchema.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.description {
+  padding: 0 310px;
 }
 
