@@ -26,7 +26,15 @@ export const About = () => {
 							</div>
 						</div>
 						<div className='terms-card__small-dot'></div>
-						<div className='bottom-chevron'></div>
+						<div className='bottom-chevron'>
+							<ul className='chevron-list'>
+								<li className='chevron-list__item'>Oocyte - female reproductive cell</li>
+								<li className='chevron-list__item'>
+									Aneuploid oocyte - oocyte with chromosomal pathologies
+								</li>
+								<li>Aneuploid oocyte makes aneuploid embryo</li>
+							</ul>
+						</div>
 						<div className='terms-card__bottom-circle'></div>
 					</div>
 					<div className='numbers-card'>
@@ -42,7 +50,15 @@ export const About = () => {
 							</div>
 						</div>
 						<div className='numbers-card__small-dot'></div>
-						<div className='bottom-chevron'></div>
+						<div className='bottom-chevron'>
+							<ul className='chevron-list'>
+								<li className='chevron-list__item'>Aneuploid embryo rate for women age:</li>
+								<li className='chevron-list__item no-style'>
+									25-30 - 25% <br /> 40+ - 90%
+								</li>
+								<li> 95% of aneuploid embryo doesn’t survive</li>
+							</ul>
+						</div>
 						<div className='numbers-card__bottom-circle'></div>
 					</div>
 
@@ -59,7 +75,15 @@ export const About = () => {
 							</div>
 						</div>
 						<div className='landscape-card__small-dot'></div>
-						<div className='bottom-chevron'></div>
+						<div className='bottom-chevron'>
+							<ul className='chevron-list two-rows'>
+								<li className='chevron-list__item'>
+									Only 2% use aneuploid embryo diagnostic (PGT-A)
+								</li>
+								<li className='chevron-list__item'>The rest 98% don’t know their embryo status</li>
+								<li className='chevron-list__item no-style text-center'>They play a lottery</li>
+							</ul>
+						</div>
 						<div className='landscape-card__bottom-circle'></div>
 					</div>
 				</div>

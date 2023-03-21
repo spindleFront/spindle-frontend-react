@@ -9,6 +9,7 @@ $chevronBGColor: #26163E;
 $numbersColor: #F58A21;
 $numbersGradient: #F5951B;
 $landscapeColor: #D73655;
+$pinkTextColor: #D2355E;
 
 
 @mixin white-text {
@@ -131,8 +132,15 @@ $landscapeColor: #D73655;
   width: 156px;
   border: 1px solid $color;
   border-radius: 50%;
-  top: 611px;
+  top: 641px;
   left: 116px;
 }
+
+@mixin chevron-typography {
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 26px;
+}
+
 
 

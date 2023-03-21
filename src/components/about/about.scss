@@ -126,10 +126,34 @@
 .bottom-chevron {
   position: absolute;
   z-index: -1;
-  height: 400px;
+  height: 430px;
   width: 320px;
   background-color: $chevronBGColor;
   border-radius: 23px;
   top: 344px;
   left: 39px;
+  box-sizing: border-box;
+  justify-content: center;
+  padding: 100px 0;
+}
+
+.chevron-list {
+  padding-left: 34px;
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  color: $whiteColor;
+  @include chevron-typography;
+  margin: 0;
+  height: 300px;
+}
+
+.no-style {
+  list-style: none;
+}
+
+.text-center {
+  margin-right: 30px;
+  @include chevron-typography;
+  text-align: center;
+  color: $pinkTextColor;
 }
