@@ -48,4 +48,21 @@
   color: $whiteColor;
 }
 
+.contact-us {
+  margin-top: 150px;
 
+  &__container {
+    @include grid-with-two-columns;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.google-link {
+  display: block;
+  width: 200px;
+}

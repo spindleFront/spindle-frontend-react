@@ -21,6 +21,27 @@ export const About = () => {
 				<div className='technology-schema'></div>
 			</section>
 			<DescriptionSection />
+			<section className='contact-us'>
+				<h3 className='embryos-problem__header'>Contact us</h3>
+				<div className='contact-us__container'>
+					<div className='contact-us__item'>
+						<a target='_blank' href='https://calendly.com/respindle'>
+							<img
+								alt='calendly-logo'
+								src={require('../../common/assets/icons/calendlyLogo.svg').default}
+							/>
+						</a>
+					</div>
+					<div className='contact-us__item'>
+						<a className='google-link' target='_blank' href='https://forms.gle/vEgpfBNBKZDiBSuu9'>
+							<img
+								alt='google-forms-logo'
+								src={require('../../common/assets/icons/googleFormsLogo.svg').default}
+							/>
+						</a>
+					</div>
+				</div>
+			</section>
 		</div>
 	);
 };
