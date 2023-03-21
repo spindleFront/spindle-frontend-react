@@ -18,8 +18,7 @@
   @include circle-radius;
   @include square-size;
   background-image: url("../../common/assets/icons/oocyte.svg");
-  background-repeat: no-repeat;
-  background-size: cover;
+  @include background-position;
   margin-left: 40px;
 }
 
@@ -39,11 +38,14 @@
   height: 691px;
   margin-bottom: 150px;
   background-image: url("../../common/assets/icons/technologySchema.svg");
-  background-repeat: no-repeat;
-  background-size: cover;
+  @include background-position;
 }
 
 .description {
   padding: 0 310px;
+  text-align: center;
+  @include big-fonts;
+  color: $whiteColor;
 }
+
 

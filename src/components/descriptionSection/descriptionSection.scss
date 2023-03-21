@@ -1,0 +1,37 @@
+@import '../../common/styles/variables';
+
+.description-container {
+  margin-top: 150px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.description-card {
+  position: relative;
+
+  &__image {
+    width: 344px;
+    height: 165px;
+    @include background-position;
+  }
+
+  &__step-name {
+    position: absolute;
+    top: 110px;
+    left: 160px;
+    @include big-fonts;
+    color: $turquoiseWithOpacity;
+  }
+
+  &__step-description {
+    padding: 20px 20px 0 75px;
+    @include smaller-fonts;
+    color: $turquoiseWithOpacity;
+  }
+}
+
+@for $i from 1 through 4 {
+  .step-#{$i} {
+    background-image: url("../../common/assets/icons/step-#{$i}.svg")
+  }
+}

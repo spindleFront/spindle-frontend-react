@@ -76,10 +76,14 @@ $pinkTextColor: #D2355E;
   height: 164px;
 }
 
-@mixin problem-solid-circle {
+@mixin smaller-fonts {
   font-weight: 700;
   font-size: 28px;
   line-height: 33px;
+}
+
+@mixin problem-solid-circle {
+  @include smaller-fonts;
   color: $whiteColor;
   @include solid-circle-size;
   @include circle-radius;
@@ -140,6 +144,11 @@ $pinkTextColor: #D2355E;
   font-weight: 700;
   font-size: 22px;
   line-height: 26px;
+}
+
+@mixin background-position {
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Header } from '../header';
 import { ProblemsSectionMarkup } from '../problemsSection';
+import { DescriptionSection } from '../descriptionSection';
 import './about.scss';
 
 export const About = () => {
@@ -19,12 +20,7 @@ export const About = () => {
 				<h3 className='embryos-problem__header'>Our technology is a solution</h3>
 				<div className='technology-schema'></div>
 			</section>
-			<section>
-				<h3 className='embryos-problem__header description'>
-					ReSpindle is a complex AI technology in a four-step web interface <br /> for assisted
-					reproduction clinics
-				</h3>
-			</section>
+			<DescriptionSection />
 		</div>
 	);
 };
