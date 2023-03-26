@@ -2,10 +2,22 @@ import React, { useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { sentImage } from '../../services/sentImage';
 import { Logo } from '../logo';
+import { useMutation } from '@tanstack/react-query';
+import { useNavigate } from 'react-router-dom';
 import './uploadPhotoPage.scss';
 
 export const UploadPhotoPage = () => {
-	const onDrop = useCallback((acceptedFiles: File[]) => sentImage(acceptedFiles[0]), []);
+	const navigate = useNavigate();
+	const { mutate } = useMutation({
+		mutationKey: ['sentImage'],
+		mutationFn: sentImage,
+		onSuccess: () => {
+			navigate('/detection');
+		},
+	});
+	const onDrop = useCallback((acceptedFiles: File[]) => {
+		return mutate(acceptedFiles[0]);
+	}, []);
 	const { getRootProps, getInputProps } = useDropzone({ onDrop });
 	return (
 		<div className='container'>

@@ -1,31 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import { UploadPhotoPage } from './components/uploadPhotoPage';
-import { AneuploidyDetection } from './components/aneuploidyDetection';
-import { Preclinical } from './components/preclinical';
-import { About } from './components/about';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import App from './App';
+import { BrowserRouter } from 'react-router-dom';
 import './index.scss';
 
-const router = createBrowserRouter([
-	{ path: '/', element: <UploadPhotoPage /> },
-	{
-		path: '/detection',
-		element: <AneuploidyDetection />,
-	},
-	{
-		path: '/preclinical',
-		element: <Preclinical />,
-	},
-	{
-		path: '/about',
-		element: <About />,
-	},
-]);
+export const queryClient = new QueryClient();
 
 const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(
 	<React.StrictMode>
-		<RouterProvider router={router} />
+		<QueryClientProvider client={queryClient}>
+			<BrowserRouter>
+				<App />
+			</BrowserRouter>
+		</QueryClientProvider>
 	</React.StrictMode>
 );

@@ -1,11 +1,9 @@
 import React from 'react';
-import { Header } from '../header';
 import './preclinical.scss';
 
 export const Preclinical = () => {
 	return (
-		<div className='container'>
-			<Header />
+		<div>
 			<div className='preclinical-container'>
 				<div className='image-container'>img</div>
 				<div className='preclinical-info'>

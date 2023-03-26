@@ -3,13 +3,15 @@ import { Logo } from '../logo';
 import { TryDemoButton } from '../tryDemoButton';
 import './header.scss';
 
-export const Header = () => (
-	<div className='header-container'>
-		<div>
-			<Logo />
+export const Header = () => {
+	return (
+		<div className='header-container'>
+			<div>
+				<Logo />
+			</div>
+			<div>
+				<TryDemoButton />
+			</div>
 		</div>
-		<div>
-			<TryDemoButton />
-		</div>
-	</div>
-);
+	);
+};

@@ -1,13 +1,29 @@
-import React from 'react';
-import { Header } from '../header';
+import React, { useCallback, useMemo } from 'react';
+import { queryClient } from '../../index';
+import { useNavigate } from 'react-router-dom';
 import './aneuploidyDetection.scss';
 
-export const AneuploidyDetection = () => {
+export const AneuploidyDetection: React.FC = () => {
+	const navigate = useNavigate();
+	const handleCheckButtonClick = useCallback(() => navigate('/preclinical'), []);
+	const mutations = queryClient.getMutationCache().getAll();
+	const file = useMemo(() => {
+		if (mutations.length > 0) {
+			return mutations[0].state.variables;
+		}
+		return {};
+	}, [mutations]);
+
+	const objectUrl = useMemo(() => {
+		if (file instanceof Blob) {
+			return file && URL.createObjectURL(file);
+		}
+	}, [file]);
+
 	return (
-		<div className='container'>
-			<Header />
+		<div>
 			<div className='info-container'>
-				<div className='image-container'>img</div>
+				<div style={{ backgroundImage: `url(${objectUrl})` }} className='image-container'></div>
 				<div className='info'>
 					<h3 className='info__header'> Spindle detected </h3>
 					<p className='info__description'>
@@ -39,7 +55,9 @@ export const AneuploidyDetection = () => {
 						</li>
 					</ul>
 					<div className='check-button-container'>
-						<button className='check-button'>Check aneuploidy status</button>
+						<button onClick={handleCheckButtonClick} className='check-button'>
+							Check aneuploidy status
+						</button>
 					</div>
 				</div>
 			</div>

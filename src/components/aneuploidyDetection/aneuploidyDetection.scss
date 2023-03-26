@@ -8,6 +8,8 @@
 .image-container {
   @include square-size;
   @include border;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .info {
@@ -59,4 +61,8 @@
   @include button-style;
   font-size: 40px;
   padding: 20px 34px;
+  
+  &:hover {
+    cursor: pointer;
+  }
 }
