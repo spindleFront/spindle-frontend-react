@@ -1,29 +1,29 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { queryClient } from '../../index';
 import { useNavigate } from 'react-router-dom';
+import { ROUTE_NAMES } from '../../common/enums/routeNames';
 import './aneuploidyDetection.scss';
 
 export const AneuploidyDetection: React.FC = () => {
 	const navigate = useNavigate();
-	const handleCheckButtonClick = useCallback(() => navigate('/preclinical'), []);
-	const mutations = queryClient.getMutationCache().getAll();
-	const file = useMemo(() => {
-		if (mutations.length > 0) {
-			return mutations[0].state.variables;
-		}
-		return {};
-	}, [mutations]);
+	const handleCheckButtonClick = useCallback(() => navigate(ROUTE_NAMES.PRECLINICAL), []);
+	const queryCache = queryClient.getQueryCache().getAll();
+	const mutationCache = queryClient.getMutationCache().getAll();
+	// @ts-ignore
+	const isSpindleDetected = Object.keys(mutationCache[0].state.data?.data).length > 0;
 
-	const objectUrl = useMemo(() => {
-		if (file instanceof Blob) {
-			return file && URL.createObjectURL(file);
-		}
-	}, [file]);
-
+	useEffect(() => {
+		return () => {
+			queryClient.clear();
+		};
+	}, []);
 	return (
 		<div>
 			<div className='info-container'>
-				<div style={{ backgroundImage: `url(${objectUrl})` }} className='image-container'></div>
+				<div
+					className={!isSpindleDetected ? 'image-container no-spindle' : 'image-container'}
+					style={{ backgroundImage: `url(${queryCache.length && queryCache[0].state.data})` }}
+				></div>
 				<div className='info'>
 					<h3 className='info__header'> Spindle detected </h3>
 					<p className='info__description'>

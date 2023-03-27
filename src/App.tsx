@@ -6,24 +6,25 @@ import { Preclinical } from './components/preclinical';
 import { About } from './components/about';
 import { Header } from './components/header';
 import './App.scss';
+import { ROUTE_NAMES } from './common/enums/routeNames';
 
 interface Routes {
-	path: string;
+	path: ROUTE_NAMES;
 	element: ReactElement;
 }
 
 const ROUTES: Routes[] = [
-	{ path: '/upload', element: <UploadPhotoPage /> },
+	{ path: ROUTE_NAMES.UPLOAD, element: <UploadPhotoPage /> },
 	{
-		path: '/detection',
+		path: ROUTE_NAMES.DETECTION,
 		element: <AneuploidyDetection />,
 	},
 	{
-		path: '/preclinical',
+		path: ROUTE_NAMES.PRECLINICAL,
 		element: <Preclinical />,
 	},
 	{
-		path: '/',
+		path: ROUTE_NAMES.HOME,
 		element: <About />,
 	},
 ];
@@ -31,15 +32,13 @@ const ROUTES: Routes[] = [
 function App() {
 	const location = useLocation();
 	return (
-		<div className='App'>
-			<div className='container'>
-				{!location.pathname.includes('upload') && <Header />}
-				<Routes>
-					{ROUTES.map(({ path, element }) => (
-						<Route key={path} path={path} element={element} />
-					))}
-				</Routes>
-			</div>
+		<div className='container'>
+			{!location.pathname.includes('upload') && <Header />}
+			<Routes>
+				{ROUTES.map(({ path, element }) => (
+					<Route key={path} path={path} element={element} />
+				))}
+			</Routes>
 		</div>
 	);
 }

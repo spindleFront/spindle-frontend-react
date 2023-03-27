@@ -3,6 +3,7 @@
 .info-container {
   @include grid-with-two-columns;
   margin-top: 140px;
+  position: relative;
 }
 
 .image-container {
@@ -10,6 +11,11 @@
   @include border;
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
+}
+
+.no-spindle {
+  border-color: $warningColor;
 }
 
 .info {
@@ -61,7 +67,7 @@
   @include button-style;
   font-size: 40px;
   padding: 20px 34px;
-  
+
   &:hover {
     cursor: pointer;
   }

@@ -1,0 +1,19 @@
+@import '../../common/styles/variables';
+
+
+.hide {
+  position: absolute;
+  right: 2000px;
+}
+
+.spindle-container {
+  position: relative;
+  padding: 0;
+}
+
+.spindle-locator {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border: 1px solid $warningColor;
+}

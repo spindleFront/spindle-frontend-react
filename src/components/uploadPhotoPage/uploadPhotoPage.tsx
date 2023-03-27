@@ -1,24 +1,23 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { sentImage } from '../../services/sentImage';
 import { Logo } from '../logo';
 import { useMutation } from '@tanstack/react-query';
-import { useNavigate } from 'react-router-dom';
+import { DetectionPhoto } from '../detectionPhoto';
 import './uploadPhotoPage.scss';
 
 export const UploadPhotoPage = () => {
-	const navigate = useNavigate();
-	const { mutate } = useMutation({
+	const [file, setFile] = useState<File | undefined>();
+	const { mutate, data } = useMutation({
 		mutationKey: ['sentImage'],
 		mutationFn: sentImage,
-		onSuccess: () => {
-			navigate('/detection');
-		},
 	});
 	const onDrop = useCallback((acceptedFiles: File[]) => {
+		setFile(acceptedFiles[0]);
 		return mutate(acceptedFiles[0]);
 	}, []);
 	const { getRootProps, getInputProps } = useDropzone({ onDrop });
+
 	return (
 		<div className='container'>
 			<div className='logo-container'>
@@ -37,6 +36,7 @@ export const UploadPhotoPage = () => {
 					</div>
 					<div className='upload-text'>Upload a photo of your oocyte</div>
 				</form>
+				<DetectionPhoto file={file} data={data} />
 			</div>
 		</div>
 	);

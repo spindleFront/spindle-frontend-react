@@ -1,0 +1,1 @@
+export { DetectionPhoto } from './detectionPhoto';
