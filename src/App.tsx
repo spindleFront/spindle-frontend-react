@@ -33,7 +33,7 @@ function App() {
 	const location = useLocation();
 	return (
 		<div className='container'>
-			{!location.pathname.includes('upload') && <Header />}
+			{!location.pathname.includes(ROUTE_NAMES.UPLOAD) && <Header />}
 			<Routes>
 				{ROUTES.map(({ path, element }) => (
 					<Route key={path} path={path} element={element} />

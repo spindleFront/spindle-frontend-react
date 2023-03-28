@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect, useMemo } from 'react';
 import { queryClient } from '../../index';
 import { useNavigate } from 'react-router-dom';
 import { ROUTE_NAMES } from '../../common/enums/routeNames';
@@ -9,14 +9,20 @@ export const AneuploidyDetection: React.FC = () => {
 	const handleCheckButtonClick = useCallback(() => navigate(ROUTE_NAMES.PRECLINICAL), []);
 	const queryCache = queryClient.getQueryCache().getAll();
 	const mutationCache = queryClient.getMutationCache().getAll();
-	// @ts-ignore
-	const isSpindleDetected = Object.keys(mutationCache[0].state.data?.data).length > 0;
+
+	const isSpindleDetected = useMemo(() => {
+		if (mutationCache.length > 0) {
+			// @ts-ignore
+			return Object.keys(mutationCache[0].state.data?.data).length > 0;
+		}
+	}, []);
 
 	useEffect(() => {
 		return () => {
 			queryClient.clear();
 		};
 	}, []);
+
 	return (
 		<div>
 			<div className='info-container'>
