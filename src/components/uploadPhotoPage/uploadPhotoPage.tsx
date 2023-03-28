@@ -4,11 +4,12 @@ import { sentImage } from '../../services/sentImage';
 import { Logo } from '../logo';
 import { useMutation } from '@tanstack/react-query';
 import { DetectionPhoto } from '../detectionPhoto';
+import { Loader } from '../loader';
 import './uploadPhotoPage.scss';
 
 export const UploadPhotoPage = () => {
 	const [file, setFile] = useState<File | undefined>();
-	const { mutate, data } = useMutation({
+	const { mutate, data, isLoading } = useMutation({
 		mutationKey: ['sentImage'],
 		mutationFn: sentImage,
 	});
@@ -20,6 +21,7 @@ export const UploadPhotoPage = () => {
 
 	return (
 		<div className='container'>
+			{isLoading && <Loader />}
 			<div className='logo-container'>
 				<Logo />
 			</div>

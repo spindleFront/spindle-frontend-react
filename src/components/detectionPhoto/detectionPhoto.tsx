@@ -62,13 +62,6 @@ export const DetectionPhoto: React.FC<DetectionPhoto> = ({ data, file }) => {
 					></div>
 				</div>
 			</div>
-			<button
-				onClick={() => {
-					takeScreenshot(imageRef.current);
-				}}
-			>
-				Take Screenshot
-			</button>
 		</div>
 	);
 };
