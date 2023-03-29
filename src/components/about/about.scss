@@ -63,6 +63,11 @@
 }
 
 .google-link {
+  text-decoration: none;
+  white-space: nowrap;
   display: block;
   width: 200px;
+  @include flex-align-center;
+  font-size: 84px;
+  color: $brownTextColor;
 }

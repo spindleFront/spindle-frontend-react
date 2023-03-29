@@ -32,10 +32,7 @@ export const About = () => {
 					</div>
 					<div className='contact-us__item'>
 						<a className='google-link' target='_blank' href='https://forms.gle/vEgpfBNBKZDiBSuu9'>
-							<img
-								alt='google-forms-logo'
-								src={require('../../common/assets/icons/googleFormsLogo.svg').default}
-							/>
+							Google Form
 						</a>
 					</div>
 				</div>

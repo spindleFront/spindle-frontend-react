@@ -1,9 +1,13 @@
 import React from 'react';
 import { queryClient } from '../../index';
+import { useNavigate } from 'react-router-dom';
+import { ROUTE_NAMES } from '../../common/enums/routeNames';
 import './preclinical.scss';
 
 export const Preclinical = () => {
 	const queryCache = queryClient.getQueryCache().getAll();
+	const navigate = useNavigate();
+	const handleButtonClick = () => navigate(ROUTE_NAMES.HOME);
 
 	return (
 		<div>
@@ -17,7 +21,9 @@ export const Preclinical = () => {
 						Module in development, leave your contact to stay updated
 					</h3>
 					<div className='button-container'>
-						<button className='contact-us-button'>Contact us</button>
+						<button onClick={handleButtonClick} className='contact-us-button'>
+							Contact us
+						</button>
 					</div>
 				</div>
 			</div>
