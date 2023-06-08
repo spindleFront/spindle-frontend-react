@@ -10,6 +10,7 @@ $numbersColor: #F58A21;
 $numbersGradient: #F5951B;
 $landscapeColor: #D73655;
 $pinkTextColor: #D2355E;
+$signInFontSize: 24px;
 
 
 @mixin white-text {
@@ -149,6 +150,15 @@ $pinkTextColor: #D2355E;
 @mixin background-position {
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+@mixin signIn-input {
+  width: 400px;
+  height: 60px;
+  box-sizing: border-box;
+  @include border;
+  font-size: $signInFontSize;
+  color: $whiteColor;
 }
 
 

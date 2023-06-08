@@ -4,9 +4,10 @@ import { UploadPhotoPage } from './components/uploadPhotoPage';
 import { AneuploidyDetection } from './components/aneuploidyDetection';
 import { Preclinical } from './components/preclinical';
 import { About } from './components/about';
+import { ROUTE_NAMES } from './common/enums/routeNames';
+import { SignIn } from './components/signIn';
 import { Header } from './components/header';
 import './App.scss';
-import { ROUTE_NAMES } from './common/enums/routeNames';
 
 interface Routes {
 	path: ROUTE_NAMES;
@@ -27,13 +28,18 @@ const ROUTES: Routes[] = [
 		path: ROUTE_NAMES.HOME,
 		element: <About />,
 	},
+	{
+		path: ROUTE_NAMES.SIGN_IN,
+		element: <SignIn />,
+	},
 ];
 
 function App() {
 	const location = useLocation();
 	return (
 		<div className='container'>
-			{!location.pathname.includes(ROUTE_NAMES.UPLOAD) && <Header />}
+			{!location.pathname.includes(ROUTE_NAMES.UPLOAD) ||
+				(!location.pathname.includes(ROUTE_NAMES.SIGN_IN) && <Header />)}
 			<Routes>
 				{ROUTES.map(({ path, element }) => (
 					<Route key={path} path={path} element={element} />
