@@ -1,0 +1,18 @@
+@import "../../common/styles/variables";
+
+
+.input {
+  @include signIn-input;
+  background-color: transparent;
+  padding: 16px 27px;
+
+  &:focus {
+    outline: none;
+  }
+
+  &::placeholder {
+    font-size: $signInFontSize;
+    color: $whiteColor;
+    padding: 0;
+  }
+}

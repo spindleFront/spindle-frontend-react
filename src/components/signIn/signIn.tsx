@@ -1,18 +1,25 @@
 import React from 'react';
 import { Logo } from '../logo';
+import { Input } from '../input';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { SignInFormValues } from '../../common/interfaces/signInFormValues';
 import './signIn.scss';
 
 export const SignIn = () => {
+	const { register, handleSubmit } = useForm<SignInFormValues>();
+
+	const onSubmit: SubmitHandler<SignInFormValues> = (data) => console.log(data);
+
 	return (
 		<main className='signIn'>
 			<div className='signIn__logo'>
 				<Logo />
 			</div>
 			<div className='signIn__card'>
-				<form>
+				<form onSubmit={handleSubmit(onSubmit)}>
 					<div className='signIn__input-container'>
-						<input placeholder='e-mail' type='email' className='input' />
-						<input placeholder='password' type='password' className='input' />
+						<Input register={register} type='e-mail' placeholder='email' />
+						<Input register={register} type='password' placeholder='password' />
 					</div>
 					<div className='signIn__buttons-container'>
 						<button type='submit' className='button signIn'>
