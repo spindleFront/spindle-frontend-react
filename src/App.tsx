@@ -7,6 +7,7 @@ import { About } from './components/about';
 import { ROUTE_NAMES } from './common/enums/routeNames';
 import { SignIn } from './components/signIn';
 import { Header } from './components/header';
+import { SignUp } from './components/signUp';
 import './App.scss';
 
 interface Routes {
@@ -31,6 +32,10 @@ const ROUTES: Routes[] = [
 	{
 		path: ROUTE_NAMES.SIGN_IN,
 		element: <SignIn />,
+	},
+	{
+		path: ROUTE_NAMES.SIGN_UP,
+		element: <SignUp />,
 	},
 ];
 

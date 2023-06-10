@@ -2,13 +2,13 @@ import React from 'react';
 import { Logo } from '../logo';
 import { Input } from '../input';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { SignInFormValues } from '../../common/interfaces/signInFormValues';
+import { FormValues } from '../../common/interfaces/FormValues';
 import './signIn.scss';
 
 export const SignIn = () => {
-	const { register, handleSubmit } = useForm<SignInFormValues>();
+	const { register, handleSubmit } = useForm<FormValues>();
 
-	const onSubmit: SubmitHandler<SignInFormValues> = (data) => console.log(data);
+	const onSubmit: SubmitHandler<FormValues> = (data) => console.log(data);
 
 	return (
 		<main className='signIn'>
@@ -18,8 +18,8 @@ export const SignIn = () => {
 			<div className='signIn__card'>
 				<form onSubmit={handleSubmit(onSubmit)}>
 					<div className='signIn__input-container'>
-						<Input register={register} type='e-mail' placeholder='email' />
-						<Input register={register} type='password' placeholder='password' />
+						<Input name='email' register={register} type='e-mail' placeholder='email' />
+						<Input name='password' register={register} type='password' placeholder='password' />
 					</div>
 					<div className='signIn__buttons-container'>
 						<button type='submit' className='button signIn'>
