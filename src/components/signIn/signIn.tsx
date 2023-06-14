@@ -3,12 +3,33 @@ import { Logo } from '../logo';
 import { Input } from '../input';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { FormValues } from '../../common/interfaces/FormValues';
+import { Button } from '../button';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
+import { ROUTE_NAMES } from '../../common/enums/routeNames';
 import './signIn.scss';
 
 export const SignIn = () => {
 	const { register, handleSubmit } = useForm<FormValues>();
+	const navigate = useNavigate();
+	const auth = getAuth();
 
-	const onSubmit: SubmitHandler<FormValues> = (data) => console.log(data);
+	const onSubmit: SubmitHandler<FormValues> = (data) =>
+		signInWithEmailAndPassword(auth, data.email, data.password)
+			.then((userCredential) => {
+				// Signed in
+				const user = userCredential.user;
+				if (user) {
+					window.localStorage.setItem('user', user.uid);
+					navigate(ROUTE_NAMES.OOCYTE_FORM);
+				}
+			})
+			.catch((error) => {
+				// const errorCode = error.code;
+				// const errorMessage = error.message;
+			});
+
+	const onSignUpClick = () => navigate(ROUTE_NAMES.SIGN_UP);
 
 	return (
 		<main className='signIn'>
@@ -22,10 +43,8 @@ export const SignIn = () => {
 						<Input name='password' register={register} type='password' placeholder='password' />
 					</div>
 					<div className='signIn__buttons-container'>
-						<button type='submit' className='button signIn'>
-							Sign In
-						</button>
-						<button className='button'>Sign Up</button>
+						<Button text='Sign In' style='contained' type='submit' />
+						<Button onClick={onSignUpClick} text='Sign Up' style='regular' type='button' />
 					</div>
 					<div className='signIn__separator-container'>
 						<div className='signIn__horizontal-line'></div>

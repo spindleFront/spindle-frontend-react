@@ -4,5 +4,6 @@ export enum ROUTE_NAMES {
 	PRECLINICAL = '/preclinical',
 	SIGN_IN = '/signIn',
 	SIGN_UP = '/signUP',
+	OOCYTE_FORM = '/upload-form',
 	HOME = '/',
 }

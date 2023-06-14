@@ -1,0 +1,19 @@
+@import "../../common/styles/variables";
+
+
+.button {
+  @include button-style;
+  box-sizing: border-box;
+  font-size: $signInFontSize;
+  width: 108px;
+  height: 40px;
+  color: $whiteColor;
+  @include align-justify-center;
+  cursor: pointer;
+
+  &.contained {
+    background-color: $turquoiseWithOpacity;
+    border: none;
+    padding-top: 4px;
+  }
+}

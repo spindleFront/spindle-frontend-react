@@ -8,8 +8,17 @@ export interface InputProps {
 	placeholder: string;
 	name: Path<FormValues>;
 	register: UseFormRegister<FormValues>;
+	width?: string;
 }
 
-export const Input: React.FC<InputProps> = ({ type, placeholder, register, name }) => {
-	return <input {...register(name)} placeholder={placeholder} type={type} className='input' />;
+export const Input: React.FC<InputProps> = ({ type, placeholder, register, name, width }) => {
+	return (
+		<input
+			style={{ width: width }}
+			{...register(name)}
+			placeholder={placeholder}
+			type={type}
+			className='input'
+		/>
+	);
 };

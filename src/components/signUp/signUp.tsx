@@ -1,14 +1,33 @@
 import React from 'react';
-import './signUp.scss';
 import { Logo } from '../logo';
 import { Input } from '../input';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { FormValues } from '../../common/interfaces/FormValues';
+import { Button } from '../button';
+import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
+import { ROUTE_NAMES } from '../../common/enums/routeNames';
+import './signUp.scss';
 
 export const SignUp = () => {
+	const navigate = useNavigate();
 	const { register, handleSubmit } = useForm<FormValues>();
-	const onSubmit: SubmitHandler<FormValues> = (data) => console.log(data);
 
+	const auth = getAuth();
+	const onSubmit: SubmitHandler<FormValues> = (data) =>
+		createUserWithEmailAndPassword(auth, data.email, data.password)
+			.then((userCredential) => {
+				const user = userCredential.user;
+				if (user) {
+					window.localStorage.setItem('user', user.uid);
+					navigate(ROUTE_NAMES.OOCYTE_FORM);
+				}
+			})
+			.catch((error) => {
+				// const errorCode = error.code;
+				// const errorMessage = error.message;
+				// ..
+			});
 	return (
 		<main className='signUp'>
 			<div className='signUp__logo'>
@@ -27,9 +46,7 @@ export const SignUp = () => {
 						/>
 					</div>
 					<div className='signUp__button-container'>
-						<button type='submit' className='button'>
-							Sign Up
-						</button>
+						<Button text='Sign Up' type='submit' style='regular' />
 					</div>
 				</form>
 			</div>
