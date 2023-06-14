@@ -8,6 +8,7 @@ import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import { ROUTE_NAMES } from '../../common/enums/routeNames';
 import { app } from '../../firebase';
+import { googleAuth } from '../../common/auth/googleAuth/googleAuth';
 import './signIn.scss';
 
 export const SignIn = () => {
@@ -31,6 +32,9 @@ export const SignIn = () => {
 			});
 
 	const onSignUpClick = () => navigate(ROUTE_NAMES.SIGN_UP);
+	const onGoogleAuthClick = () => {
+		googleAuth(navigate, ROUTE_NAMES.OOCYTE_FORM);
+	};
 
 	return (
 		<main className='signIn'>
@@ -53,7 +57,11 @@ export const SignIn = () => {
 						<div className='signIn__horizontal-line'></div>
 					</div>
 					<div className='signIn__social-container'>
-						<button type='submit' className='signIn__social-container-item'>
+						<button
+							onClick={onGoogleAuthClick}
+							type='button'
+							className='signIn__social-container-item'
+						>
 							<div className='signIn__logo-container'>
 								<img
 									alt='Google logo'
@@ -62,7 +70,11 @@ export const SignIn = () => {
 							</div>
 							<div className='signIn__logo-description'>Sign in with Google</div>
 						</button>
-						<button type='submit' className='signIn__social-container-item'>
+						<button
+							// onClick={() => googleAuth()}
+							// type='button'
+							className='signIn__social-container-item'
+						>
 							<div className='signIn__logo-container'>
 								<img
 									alt='Google logo'
