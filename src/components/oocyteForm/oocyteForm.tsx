@@ -1,51 +1,20 @@
 import React from 'react';
-import { Logo } from '../logo';
 import { Button } from '../button';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Input } from '../input';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { FormValues } from '../../common/interfaces/FormValues';
-import { getAuth, signOut } from 'firebase/auth';
-import { ROUTE_NAMES } from '../../common/enums/routeNames';
-import { app } from '../../firebase';
+import { Header } from '../header';
 import './oocyteForm.scss';
 
 export const OocyteForm = () => {
-	const navigate = useNavigate();
-	const auth = getAuth(app);
-
-	const logOut = () => {
-		const auth = getAuth();
-		window.localStorage.removeItem('user');
-		signOut(auth)
-			.then(() => {
-				navigate(ROUTE_NAMES.HOME);
-			})
-			.catch((e) => console.log(e.message));
-	};
-
 	const { register, handleSubmit } = useForm<FormValues>();
 
 	const onSubmit: SubmitHandler<FormValues> = (data) => console.log(data);
 
 	return (
 		<div className='oocyteForm'>
-			<header className='oocyteForm__header'>
-				<div>
-					<Logo />
-				</div>
-				<div className='oocyteForm__logged-user-container'>
-					{auth?.currentUser?.email && (
-						<div className='oocyteForm__logged-user'>
-							<div className='oocyteForm__image-container'></div>
-							<div className='oocyteForm__logged-user-email'>{auth?.currentUser?.email}</div>
-						</div>
-					)}
-					<div className='oocyteForm__header-button-container'>
-						<Button onClick={logOut} style='regular' text='Log out' type='button' />
-					</div>
-				</div>
-			</header>
+			<Header />
 			<main className='oocyteForm__main'>
 				<div className='oocyteForm__back-link-container'>
 					<Link className='oocyteForm__backButton' to={'/oocyte-list'}>

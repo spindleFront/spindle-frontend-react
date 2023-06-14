@@ -7,19 +7,20 @@ import { Button } from '../button';
 import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import { ROUTE_NAMES } from '../../common/enums/routeNames';
+import { app } from '../../firebase';
 import './signUp.scss';
 
 export const SignUp = () => {
 	const navigate = useNavigate();
 	const { register, handleSubmit } = useForm<FormValues>();
 
-	const auth = getAuth();
+	const auth = getAuth(app);
 	const onSubmit: SubmitHandler<FormValues> = (data) =>
 		createUserWithEmailAndPassword(auth, data.email, data.password)
 			.then((userCredential) => {
 				const user = userCredential.user;
-				if (user) {
-					window.localStorage.setItem('user', user.uid);
+				if (user && user.email !== null) {
+					window.localStorage.setItem('user', user.email);
 					navigate(ROUTE_NAMES.OOCYTE_FORM);
 				}
 			})
