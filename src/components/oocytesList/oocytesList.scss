@@ -1,0 +1,79 @@
+@import '../../common/styles/variables.scss';
+
+.oocytesList {
+  &__addButton-container {
+    margin-top: 58px;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__addButton {
+    @include border;
+    width: 300px;
+    height: 60px;
+    @include align-justify-center;
+    background-color: transparent;
+    box-sizing: border-box;
+    font-size: $signInFontSize;
+    color: $whiteColor;
+    cursor: pointer;
+  }
+
+  &__items-container {
+    margin-top: 50px;
+    padding: 0 100px;
+    @include grid-with-two-columns;
+  }
+
+  &__wrap {
+    background-color: $chevronBGColor;
+    border-radius: $borderRadius;
+    padding: 16px;
+    box-sizing: border-box;
+  }
+
+  &__item {
+    display: flex;
+
+
+    &-container {
+      @include align-justify-center;
+      color: $whiteColor;
+    }
+
+    &-image {
+      width: 150px;
+      height: 120px;
+    }
+
+    &-info {
+      @include grid-with-two-columns;
+      margin-left: 15px;
+      column-gap: 30px;
+    }
+
+    &-status {
+      background-image: url("../../common/assets/icons/uneuploid.svg");
+      @include background-position;
+      width: 90px;
+      height: 20px;
+    }
+
+    &-footer {
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  @for $i from 1 through 4 {
+    &__icon-#{$i} {
+      margin-right: 15px;
+      background-image: url("../../common/assets/icons/formItem-#{$i}.svg");
+      width: 15px;
+      height: 15px;
+      @include background-position;
+    }
+  }
+}

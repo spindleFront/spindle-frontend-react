@@ -1,3 +1,4 @@
+import React from 'react';
 import { RoutesType } from '../interfaces/routesType';
 import { ROUTE_NAMES } from '../enums/routeNames';
 import { UploadPhotoPage } from '../../components/uploadPhotoPage';
@@ -7,7 +8,7 @@ import { About } from '../../components/about';
 import { SignIn } from '../../components/signIn';
 import { SignUp } from '../../components/signUp';
 import { OocyteForm } from '../../components/oocyteForm';
-import React from 'react';
+import { OocytesList } from '../../components/oocytesList';
 
 export const ROUTES: RoutesType[] = [
 	{ path: ROUTE_NAMES.UPLOAD, element: <UploadPhotoPage />, hidden: false },
@@ -39,6 +40,11 @@ export const ROUTES: RoutesType[] = [
 	{
 		path: ROUTE_NAMES.OOCYTE_FORM,
 		element: <OocyteForm />,
+		hidden: true,
+	},
+	{
+		path: ROUTE_NAMES.OOCYTES_LIST,
+		element: <OocytesList />,
 		hidden: true,
 	},
 ];

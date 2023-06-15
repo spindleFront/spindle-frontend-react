@@ -23,7 +23,7 @@ export const SignIn = () => {
 				const user = userCredential.user;
 				if (user && user.email !== null) {
 					window.localStorage.setItem('user', user.email);
-					navigate(ROUTE_NAMES.OOCYTE_FORM);
+					navigate(ROUTE_NAMES.OOCYTES_LIST);
 				}
 			})
 			.catch((error) => {
