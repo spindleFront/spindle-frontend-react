@@ -2,6 +2,7 @@ import React from 'react';
 import { Header } from '../header';
 import { Link } from 'react-router-dom';
 import './euploidResult.scss';
+import { ROUTE_NAMES } from '../../common/enums/routeNames';
 
 export const EuploidResult = () => {
 	const status = false;
@@ -10,7 +11,7 @@ export const EuploidResult = () => {
 			<Header />
 			<main className='oocyteForm__main'>
 				<div className='oocyteForm__back-link-container'>
-					<Link className='oocyteForm__backButton' to={'/oocyte-list'}>
+					<Link className='oocyteForm__backButton' to={ROUTE_NAMES.OOCYTES_LIST}>
 						<div className='oocyteForm__backButton-arrow'>
 							<img
 								alt='Image of arrow'
