@@ -10,6 +10,7 @@ import { ROUTE_NAMES } from '../../common/enums/routeNames';
 import { app } from '../../firebase';
 import { googleAuth } from '../../common/auth/googleAuth/googleAuth';
 import './signIn.scss';
+import { faceBookLogin } from '../../common/auth/facebookAuth/facebookAuth';
 
 export const SignIn = () => {
 	const { register, handleSubmit } = useForm<FormValues>();
@@ -34,6 +35,10 @@ export const SignIn = () => {
 	const onSignUpClick = () => navigate(ROUTE_NAMES.SIGN_UP);
 	const onGoogleAuthClick = () => {
 		googleAuth(navigate, ROUTE_NAMES.OOCYTE_FORM);
+	};
+
+	const onFacebookAuthClick = () => {
+		faceBookLogin(navigate, ROUTE_NAMES.OOCYTES_LIST);
 	};
 
 	return (
@@ -71,8 +76,8 @@ export const SignIn = () => {
 							<div className='signIn__logo-description'>Sign in with Google</div>
 						</button>
 						<button
-							// onClick={() => googleAuth()}
-							// type='button'
+							onClick={onFacebookAuthClick}
+							type='button'
 							className='signIn__social-container-item'
 						>
 							<div className='signIn__logo-container'>

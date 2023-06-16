@@ -50,7 +50,10 @@ export const OocytesList = () => {
 						<div className='oocytesList__item-status'></div>
 						<div>
 							<button className='oocytesList__item-delete' type='button'>
-								<div className='oocytesList__item-delete-icon'></div>
+								<img
+									alt='Trash icon'
+									src={require('../../common/assets/icons/deleteIcon.svg').default}
+								/>
 							</button>
 						</div>
 					</div>

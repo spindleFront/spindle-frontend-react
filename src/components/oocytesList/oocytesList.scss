@@ -60,10 +60,17 @@
     }
 
     &-footer {
+      padding-left: 29px;
       margin-top: 10px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+    }
+
+    &-delete {
+      background-color: inherit;
+      border: none;
+      cursor: pointer;
     }
   }
 
