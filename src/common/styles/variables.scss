@@ -166,5 +166,21 @@ $signInFontSize: 14px;
   color: $whiteColor;
 }
 
+@mixin modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(30, 30, 30, 0.7);
+  z-index: 100;
+}
+
+@mixin modal-container-item {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+}
+
 
 

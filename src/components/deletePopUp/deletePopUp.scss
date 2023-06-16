@@ -1,0 +1,28 @@
+@import "../../common/styles/variables.scss";
+
+.popUp {
+  &__container {
+    @include modal-container;
+  }
+
+  &__message-container {
+    opacity: initial;
+    @include modal-container-item;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    color: $whiteColor;
+    background-color: $chevronBGColor;
+    padding: 30px 60px;
+    text-align: center;
+    border-radius: $borderRadius;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 16px;
+  }
+
+  &__buttons-container {
+    margin-top: 15px;
+    @include align-justify-center;
+    column-gap: 20px;
+  }
+}

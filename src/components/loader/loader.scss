@@ -1,19 +1,11 @@
 @import "../../common/styles/variables";
 
 .backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background-color: #1E1E1E;
-  opacity: 0.7;
+  @include modal-container;
 }
 
 .loader-container {
-  position: fixed;
-  top: 50%;
-  left: 50%;
+  @include modal-container-item;
 }
 
 .loader {

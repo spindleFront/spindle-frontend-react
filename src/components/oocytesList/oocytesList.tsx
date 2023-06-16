@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import { Header } from '../header';
 import { useNavigate } from 'react-router-dom';
 import { ROUTE_NAMES } from '../../common/enums/routeNames';
+import { DeletePopUp } from '../deletePopUp';
 import './oocytesList.scss';
 
 export const OocytesList = () => {
 	const navigate = useNavigate();
+	const [isVisible, setIsVisible] = useState(false);
+
+	const initiateDeletion = () => setIsVisible(true);
+
+	const closePopUp = useCallback(() => setIsVisible(false), []);
 
 	const handleAddButtonClick = () => navigate(ROUTE_NAMES.OOCYTE_FORM);
 	return (
@@ -49,7 +55,7 @@ export const OocytesList = () => {
 					<div className='oocytesList__item-footer'>
 						<div className='oocytesList__item-status'></div>
 						<div>
-							<button className='oocytesList__item-delete' type='button'>
+							<button onClick={initiateDeletion} className='oocytesList__item-delete' type='button'>
 								<img
 									alt='Trash icon'
 									src={require('../../common/assets/icons/deleteIcon.svg').default}
@@ -59,6 +65,7 @@ export const OocytesList = () => {
 					</div>
 				</div>
 			</div>
+			{isVisible && <DeletePopUp closePopUp={closePopUp} />}
 		</div>
 	);
 };
