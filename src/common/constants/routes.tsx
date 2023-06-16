@@ -9,6 +9,7 @@ import { SignIn } from '../../components/signIn';
 import { SignUp } from '../../components/signUp';
 import { OocyteForm } from '../../components/oocyteForm';
 import { OocytesList } from '../../components/oocytesList';
+import { EuploidResult } from '../../components/aneuploid';
 
 export const ROUTES: RoutesType[] = [
 	{ path: ROUTE_NAMES.UPLOAD, element: <UploadPhotoPage />, hidden: false },
@@ -45,6 +46,12 @@ export const ROUTES: RoutesType[] = [
 	{
 		path: ROUTE_NAMES.OOCYTES_LIST,
 		element: <OocytesList />,
+		hidden: true,
+	},
+
+	{
+		path: ROUTE_NAMES.RESULT,
+		element: <EuploidResult />,
 		hidden: true,
 	},
 ];

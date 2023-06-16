@@ -1,0 +1,20 @@
+@import '../../common/styles/variables.scss';
+
+.response-data-container {
+  color: $whiteColor;
+}
+
+
+.aneuploid-img {
+  background-image: url("../../common/assets/icons/uneuploid.svg");
+  width: 132px;
+  height: 30px;
+  @include background-position;
+}
+
+.euploid-img {
+  background-image: url("../../common/assets/icons/euploid.svg");
+  width: 110px;
+  height: 30px;
+  @include background-position;
+}
