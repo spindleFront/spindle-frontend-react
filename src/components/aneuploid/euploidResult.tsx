@@ -1,8 +1,8 @@
 import React from 'react';
 import { Header } from '../header';
 import { Link } from 'react-router-dom';
-import './euploidResult.scss';
 import { ROUTE_NAMES } from '../../common/enums/routeNames';
+import './euploidResult.scss';
 
 export const EuploidResult = () => {
 	const status = false;

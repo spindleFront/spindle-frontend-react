@@ -1,14 +1,35 @@
-import React from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import { Button } from '../button';
 import { Link } from 'react-router-dom';
 import { Input } from '../input';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { FormValues } from '../../common/interfaces/FormValues';
 import { Header } from '../header';
+import { useDropzone } from 'react-dropzone';
 import './oocyteForm.scss';
 
 export const OocyteForm = () => {
+	const [file, setFile] = useState<File | undefined>(undefined);
+
+	const onDrop = useCallback((acceptedFiles: File[]) => {
+		setFile(acceptedFiles[0]);
+	}, []);
+
+	const imageUrl = useMemo(() => {
+		if (file instanceof Blob) {
+			return URL.createObjectURL(file);
+		}
+	}, [file, setFile]);
+
+	const { getRootProps, getInputProps } = useDropzone({ onDrop });
+
 	const { register, handleSubmit } = useForm<FormValues>();
+
+	const background = useMemo(() => file && `url(${imageUrl})`, [file]);
+	const arrowIcon = useMemo(
+		() => (file ? '' : `url(${require('../../common/assets/icons/uploadIconNew.svg').default})`),
+		[file]
+	);
 
 	const onSubmit: SubmitHandler<FormValues> = (data) => console.log(data);
 
@@ -29,9 +50,22 @@ export const OocyteForm = () => {
 				</div>
 				<div className='oocyteForm__main-container'>
 					<div className='oocyteForm__uploadContainer'>
-						<div className='oocyteForm__dropArea'>
-							<div className='oocyteForm__dropArea-image'></div>
-							<div>Upload an image of oocyte</div>
+						<div
+							{...getRootProps()}
+							className='oocyteForm__dropArea'
+							style={{
+								backgroundImage: background,
+							}}
+						>
+							<div
+								style={{
+									backgroundImage: arrowIcon,
+								}}
+								className='oocyteForm__dropArea-image'
+							></div>
+							<input {...getInputProps()} />
+
+							<div>{file ? '' : 'Upload an image of oocyte'}</div>
 						</div>
 					</div>
 

@@ -3,12 +3,10 @@ import { queryClient } from '../../index';
 import { useScreenshot } from 'use-react-screenshot';
 import { ROUTE_NAMES } from '../../common/enums/routeNames';
 import { useNavigate } from 'react-router-dom';
+import { AxiosResponse } from 'axios';
 import './detectionPhoto.scss';
 
-interface Data {
-	data: any;
-	statusText: string;
-}
+type Data = AxiosResponse | undefined;
 
 interface DetectionPhoto {
 	data?: Data;

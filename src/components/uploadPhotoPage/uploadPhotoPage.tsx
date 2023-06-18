@@ -38,7 +38,7 @@ export const UploadPhotoPage = () => {
 					</div>
 					<div className='upload-text'>Upload a photo of your oocyte</div>
 				</form>
-				<DetectionPhoto file={file} data={data} />
+				<DetectionPhoto file={file as File} data={data} />
 			</div>
 		</div>
 	);

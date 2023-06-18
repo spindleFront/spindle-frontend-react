@@ -1,7 +1,6 @@
 @import '../../common/styles/variables';
 
 .oocyteForm {
-  
   &__main {
     padding: 0 160px;
   }
@@ -38,9 +37,10 @@
     height: 250px;
     border: 4px solid $whiteColor;
     color: $whiteColor;
+    @include background-position;
+    background-repeat: no-repeat;
 
     &-image {
-      background-image: url('../../common/assets/icons/uploadIconNew.svg');
       width: 45px;
       height: 45px;
       @include background-position;
