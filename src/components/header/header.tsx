@@ -4,6 +4,7 @@ import { Button } from '../button';
 import { getAuth, signOut } from 'firebase/auth';
 import { ROUTE_NAMES } from '../../common/enums/routeNames';
 import { useNavigate } from 'react-router-dom';
+import { queryClient } from '../../index';
 import './header.scss';
 
 export const Header = () => {
@@ -13,6 +14,8 @@ export const Header = () => {
 	const logOut = () => {
 		const auth = getAuth();
 		window.localStorage.removeItem('user');
+		window.localStorage.removeItem('id');
+		queryClient.clear();
 		signOut(auth)
 			.then(() => {
 				navigate(ROUTE_NAMES.SIGN_IN);

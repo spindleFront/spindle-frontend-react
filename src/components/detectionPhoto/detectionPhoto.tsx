@@ -1,9 +1,9 @@
-import React, { createRef, useEffect, useMemo } from 'react';
-import { queryClient } from '../../index';
+import React, { createRef, useContext, useEffect, useMemo } from 'react';
 import { useScreenshot } from 'use-react-screenshot';
 import { ROUTE_NAMES } from '../../common/enums/routeNames';
 import { useNavigate } from 'react-router-dom';
 import { AxiosResponse } from 'axios';
+import { FileContext } from '../../common/context/context';
 import './detectionPhoto.scss';
 
 type Data = AxiosResponse | undefined;
@@ -16,22 +16,22 @@ interface DetectionPhoto {
 export const DetectionPhoto: React.FC<DetectionPhoto> = ({ data, file }) => {
 	const navigate = useNavigate();
 	const imageRef = createRef();
+	const { setFile } = useContext(FileContext);
 
 	const [image, takeScreenshot] = useScreenshot();
 
 	useEffect(() => {
-		if (file && data) {
+		if (data) {
 			takeScreenshot(imageRef.current);
 		}
 	}, [file, data]);
 
 	useEffect(() => {
 		if (image) {
-			navigate(ROUTE_NAMES.DETECTION);
+			setFile(image);
+			navigate(ROUTE_NAMES.RESULT);
 		}
 	}, [image]);
-
-	queryClient.setQueryData(['image'], image);
 
 	const objectUrl = useMemo(() => {
 		if (file instanceof Blob) {

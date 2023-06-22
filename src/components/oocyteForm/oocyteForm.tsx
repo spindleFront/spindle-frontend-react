@@ -6,6 +6,11 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { FormValues } from '../../common/interfaces/FormValues';
 import { Header } from '../header';
 import { useDropzone } from 'react-dropzone';
+import { useMutation } from '@tanstack/react-query';
+import { sentImage } from '../../services/sentImage';
+import { Loader } from '../loader';
+import { DetectionPhoto } from '../detectionPhoto';
+import { ROUTE_NAMES } from '../../common/enums/routeNames';
 import './oocyteForm.scss';
 
 export const OocyteForm = () => {
@@ -15,13 +20,18 @@ export const OocyteForm = () => {
 		setFile(acceptedFiles[0]);
 	}, []);
 
+	const { getRootProps, getInputProps } = useDropzone({ onDrop });
+
+	const { mutate, data, isLoading } = useMutation({
+		mutationKey: ['sentImage'],
+		mutationFn: sentImage,
+	});
+
 	const imageUrl = useMemo(() => {
 		if (file instanceof Blob) {
 			return URL.createObjectURL(file);
 		}
 	}, [file, setFile]);
-
-	const { getRootProps, getInputProps } = useDropzone({ onDrop });
 
 	const { register, handleSubmit } = useForm<FormValues>();
 
@@ -31,14 +41,16 @@ export const OocyteForm = () => {
 		[file]
 	);
 
-	const onSubmit: SubmitHandler<FormValues> = (data) => console.log(data);
-
+	const onSubmit: SubmitHandler<FormValues> = async (data) => {
+		await mutate(file as File);
+	};
 	return (
 		<div className='oocyteForm'>
+			{isLoading && <Loader />}
 			<Header />
 			<main className='oocyteForm__main'>
 				<div className='oocyteForm__back-link-container'>
-					<Link className='oocyteForm__backButton' to={'/oocyte-list'}>
+					<Link className='oocyteForm__backButton' to={ROUTE_NAMES.OOCYTES_LIST}>
 						<div className='oocyteForm__backButton-arrow'>
 							<img
 								alt='Image of arrow'
@@ -121,6 +133,7 @@ export const OocyteForm = () => {
 					</div>
 				</div>
 			</main>
+			<DetectionPhoto file={file as File} data={data} />
 		</div>
 	);
 };

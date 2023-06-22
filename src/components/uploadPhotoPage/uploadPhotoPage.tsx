@@ -9,13 +9,14 @@ import './uploadPhotoPage.scss';
 
 export const UploadPhotoPage = () => {
 	const [file, setFile] = useState<File | undefined>();
+
 	const { mutate, data, isLoading } = useMutation({
 		mutationKey: ['sentImage'],
 		mutationFn: sentImage,
 	});
 	const onDrop = useCallback((acceptedFiles: File[]) => {
 		setFile(acceptedFiles[0]);
-		return mutate(acceptedFiles[0]);
+		mutate(acceptedFiles[0]);
 	}, []);
 	const { getRootProps, getInputProps } = useDropzone({ onDrop });
 

@@ -1,9 +1,9 @@
-import { getAuth, signInWithPopup } from 'firebase/auth';
+import { signInWithPopup } from 'firebase/auth';
 import { provider } from './facebookProvider';
 import { NavigateFunction } from 'react-router-dom';
+import { auth } from '../../../firebase';
 
 export const faceBookLogin = (navigate: NavigateFunction, location: string) => {
-	const auth = getAuth();
 	signInWithPopup(auth, provider)
 		.then((result) => {
 			const user = result.user;

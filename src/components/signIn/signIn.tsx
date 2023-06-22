@@ -4,18 +4,17 @@ import { Input } from '../input';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { FormValues } from '../../common/interfaces/FormValues';
 import { Button } from '../button';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import { ROUTE_NAMES } from '../../common/enums/routeNames';
-import { app } from '../../firebase';
+import { auth } from '../../firebase';
 import { googleAuth } from '../../common/auth/googleAuth/googleAuth';
-import './signIn.scss';
 import { faceBookLogin } from '../../common/auth/facebookAuth/facebookAuth';
+import './signIn.scss';
 
 export const SignIn = () => {
 	const { register, handleSubmit } = useForm<FormValues>();
 	const navigate = useNavigate();
-	const auth = getAuth(app);
 
 	const onSubmit: SubmitHandler<FormValues> = (data) =>
 		signInWithEmailAndPassword(auth, data.email, data.password)
@@ -24,13 +23,11 @@ export const SignIn = () => {
 				const user = userCredential.user;
 				if (user && user.email !== null) {
 					window.localStorage.setItem('user', user.email);
+					window.localStorage.setItem('id', user.uid);
 					navigate(ROUTE_NAMES.OOCYTES_LIST);
 				}
 			})
-			.catch((error) => {
-				// const errorCode = error.code;
-				// const errorMessage = error.message;
-			});
+			.catch(() => {});
 
 	const onSignUpClick = () => navigate(ROUTE_NAMES.SIGN_UP);
 	const onGoogleAuthClick = () => {

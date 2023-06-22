@@ -1,11 +1,28 @@
-import React from 'react';
+import React, { useContext, useEffect, useMemo } from 'react';
 import { Header } from '../header';
 import { Link } from 'react-router-dom';
 import { ROUTE_NAMES } from '../../common/enums/routeNames';
+import { queryClient } from '../../index';
+import { FileContext } from '../../common/context/context';
 import './euploidResult.scss';
 
 export const EuploidResult = () => {
-	const status = false;
+	const mutationCache = queryClient.getMutationCache().getAll();
+	const { file } = useContext(FileContext);
+
+	const isSpindleDetected = useMemo(() => {
+		if (mutationCache.length > 0) {
+			// @ts-ignore
+			return Object.keys(mutationCache[0].state.data?.data).length > 0;
+		}
+	}, [mutationCache]);
+
+	useEffect(() => {
+		return () => {
+			queryClient.clear();
+		};
+	}, []);
+
 	return (
 		<>
 			<Header />
@@ -24,7 +41,12 @@ export const EuploidResult = () => {
 				<div className='oocyteForm__main-container'>
 					<div className='oocyteForm__uploadContainer'>
 						<div
-							style={{ borderColor: status ? 'rgba(66, 232, 224, 0.7)' : 'rgba(213, 54, 91, 0.7)' }}
+							style={{
+								borderColor: isSpindleDetected
+									? 'rgba(66, 232, 224, 0.7)'
+									: 'rgba(213, 54, 91, 0.7)',
+								backgroundImage: `url(${file})`,
+							}}
 							className='oocyteForm__dropArea'
 						></div>
 					</div>
@@ -65,7 +87,7 @@ export const EuploidResult = () => {
 								</div>
 							</div>
 							<div className='oocyteForm__form-button-container'>
-								{status ? (
+								{isSpindleDetected ? (
 									<div className='euploid-img'></div>
 								) : (
 									<div className='aneuploid-img'></div>

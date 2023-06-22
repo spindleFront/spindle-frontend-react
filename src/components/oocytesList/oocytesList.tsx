@@ -3,15 +3,25 @@ import { Header } from '../header';
 import { useNavigate } from 'react-router-dom';
 import { ROUTE_NAMES } from '../../common/enums/routeNames';
 import { DeletePopUp } from '../deletePopUp';
+import { collection, getDocs, query, where } from 'firebase/firestore';
+import { db } from '../../firebase';
+import { useQuery } from '@tanstack/react-query';
 import './oocytesList.scss';
 
 export const OocytesList = () => {
+	const id = window.localStorage.getItem('id');
 	const navigate = useNavigate();
 	const [isVisible, setIsVisible] = useState(false);
-
 	const initiateDeletion = () => setIsVisible(true);
 
 	const closePopUp = useCallback(() => setIsVisible(false), []);
+
+	const getQuery = query(collection(db, 'oocytes'), where('uid', '==', id));
+
+	const getData = async (): Promise<any> => await getDocs(getQuery);
+
+	const { data } = useQuery({ queryKey: ['oocytes'], queryFn: getData });
+	data?.forEach((doc: any) => {});
 
 	const handleAddButtonClick = () => navigate(ROUTE_NAMES.OOCYTE_FORM);
 	return (
