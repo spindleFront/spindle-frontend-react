@@ -8,7 +8,7 @@ import './euploidResult.scss';
 
 export const EuploidResult = () => {
 	const mutationCache = queryClient.getMutationCache().getAll();
-	const { file } = useContext(FileContext);
+	const { file, oocyteData } = useContext(FileContext);
 
 	const isSpindleDetected = useMemo(() => {
 		if (mutationCache.length > 0) {
@@ -59,7 +59,7 @@ export const EuploidResult = () => {
 										<div className='formItem-1'></div>
 										<div className='oocyteForm__form-item-text'>Patient ID</div>
 									</div>
-									<div className='response-data-container'>Patient ID</div>
+									<div className='response-data-container'>{oocyteData?.patientID}</div>
 								</div>
 
 								<div className='oocyteForm__form-item'>
@@ -67,7 +67,7 @@ export const EuploidResult = () => {
 										<div className='formItem-2'></div>
 										<div className='oocyteForm__form-item-text'>Entity Date</div>
 									</div>
-									<div className='response-data-container'>Entity Date</div>
+									<div className='response-data-container'>{oocyteData?.entityDate}</div>
 								</div>
 
 								<div className='oocyteForm__form-item'>
@@ -75,7 +75,7 @@ export const EuploidResult = () => {
 										<div className='formItem-3'></div>
 										<div className='oocyteForm__form-item-text'>Oocyte ID</div>
 									</div>
-									<div className='response-data-container'>Oocyte ID</div>
+									<div className='response-data-container'>{oocyteData?.oocyteId}</div>
 								</div>
 
 								<div className='oocyteForm__form-item'>
@@ -83,7 +83,7 @@ export const EuploidResult = () => {
 										<div className='formItem-4'></div>
 										<div className='oocyteForm__form-item-text'>Oocyte Age</div>
 									</div>
-									<div className='response-data-container'>Oocyte Age</div>
+									<div className='response-data-container'>{oocyteData?.oocyteAge}</div>
 								</div>
 							</div>
 							<div className='oocyteForm__form-button-container'>

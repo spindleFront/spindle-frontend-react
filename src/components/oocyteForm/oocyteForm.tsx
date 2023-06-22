@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { Button } from '../button';
 import { Link } from 'react-router-dom';
 import { Input } from '../input';
@@ -11,10 +11,12 @@ import { sentImage } from '../../services/sentImage';
 import { Loader } from '../loader';
 import { DetectionPhoto } from '../detectionPhoto';
 import { ROUTE_NAMES } from '../../common/enums/routeNames';
+import { FileContext } from '../../common/context/context';
 import './oocyteForm.scss';
 
 export const OocyteForm = () => {
 	const [file, setFile] = useState<File | undefined>(undefined);
+	const { setOocyteData } = useContext(FileContext);
 
 	const onDrop = useCallback((acceptedFiles: File[]) => {
 		setFile(acceptedFiles[0]);
@@ -33,7 +35,11 @@ export const OocyteForm = () => {
 		}
 	}, [file, setFile]);
 
-	const { register, handleSubmit } = useForm<FormValues>();
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm<FormValues>();
 
 	const background = useMemo(() => file && `url(${imageUrl})`, [file]);
 	const arrowIcon = useMemo(
@@ -42,6 +48,7 @@ export const OocyteForm = () => {
 	);
 
 	const onSubmit: SubmitHandler<FormValues> = async (data) => {
+		setOocyteData(data);
 		await mutate(file as File);
 	};
 	return (
@@ -115,7 +122,14 @@ export const OocyteForm = () => {
 										<div className='formItem-3'></div>
 										<div className='oocyteForm__form-item-text'>Oocyte ID</div>
 									</div>
-									<Input register={register} type='text' name='oocyteId' placeholder='Oocyte ID' />
+									<Input
+										required={true}
+										register={register}
+										type='text'
+										name='oocyteId'
+										placeholder='Oocyte ID'
+									/>
+									{errors.oocyteId && <span className='error'>This field is required!</span>}
 								</div>
 
 								<div className='oocyteForm__form-item'>

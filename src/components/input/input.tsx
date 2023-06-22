@@ -9,13 +9,21 @@ export interface InputProps {
 	name: Path<FormValues>;
 	register: UseFormRegister<FormValues>;
 	width?: string;
+	required?: boolean;
 }
 
-export const Input: React.FC<InputProps> = ({ type, placeholder, register, name, width }) => {
+export const Input: React.FC<InputProps> = ({
+	type,
+	placeholder,
+	register,
+	name,
+	width,
+	required = false,
+}) => {
 	return (
 		<input
 			style={{ width: width }}
-			{...register(name)}
+			{...register(name, { required: required })}
 			placeholder={placeholder}
 			type={type}
 			className='input'
