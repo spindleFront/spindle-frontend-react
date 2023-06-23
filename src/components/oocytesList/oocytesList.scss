@@ -22,6 +22,7 @@
   &__items-container {
     margin-top: 50px;
     padding: 0 100px;
+    gap: 40px;
     @include grid-with-two-columns;
   }
 
@@ -53,7 +54,6 @@
     }
 
     &-status {
-      background-image: url("../../common/assets/icons/uneuploid.svg");
       @include background-position;
       width: 90px;
       height: 20px;

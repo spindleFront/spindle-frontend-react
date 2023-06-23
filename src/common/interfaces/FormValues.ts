@@ -6,4 +6,5 @@ export interface FormValues {
 	entityDate: string;
 	oocyteId: string;
 	oocyteAge: string;
+	aneuploid: boolean;
 }
