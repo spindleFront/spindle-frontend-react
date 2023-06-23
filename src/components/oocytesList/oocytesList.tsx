@@ -10,12 +10,13 @@ import { Loader } from '../loader';
 import { FormValues } from '../../common/interfaces/FormValues';
 import { queryClient } from '../../index';
 import { OocyteItem } from './oocyteItem';
+import { getDownloadURL, getStorage, ref } from 'firebase/storage';
 import './oocytesList.scss';
 
 export const OocytesList = () => {
 	const id = window.localStorage.getItem('id') || '';
 	const navigate = useNavigate();
-	const [oocyteData, setOOcyteData] = useState<Partial<FormValues>[] | []>([]);
+	const [oocyteData, setOocyteData] = useState<Partial<FormValues>[] | []>([]);
 	const [isVisible, setIsVisible] = useState(false);
 	const initiateDeletion = () => setIsVisible(true);
 
@@ -27,20 +28,54 @@ export const OocytesList = () => {
 
 	const { data, isLoading } = useQuery({ queryKey: ['oocytes'], queryFn: getData });
 
+	const storage = getStorage();
+
+	const getImageUrls = async (oocyteID: string) => {
+		return await getDownloadURL(ref(storage, `${id}/${oocyteID}`));
+	};
+
+	const renderImages = () => {
+		return (
+			<>
+				{oocyteData.map(({ oocyteId, oocyteAge, entityDate, patientID, aneuploid, image }) => {
+					return (
+						<OocyteItem
+							key={oocyteId}
+							initiateDeletion={initiateDeletion}
+							oocyteId={oocyteId || '0'}
+							oocyteAge={oocyteAge || '0'}
+							img={image || ''}
+							entityDate={entityDate || '0'}
+							patientID={patientID || '0'}
+							aneuploid={aneuploid || false}
+						/>
+					);
+				})}
+			</>
+		);
+	};
+
 	useEffect(() => {
 		if (data) {
-			data.forEach((doc: any) => setOOcyteData((state) => [...state, doc.data()]));
+			data.forEach(async (doc: any) => {
+				const image = await getImageUrls(doc.data().oocyteId);
+
+				setOocyteData((state) => {
+					return [...state, { ...doc.data(), image }];
+				});
+			});
 		}
 	}, [data]);
 
 	useEffect(() => {
 		return () => {
 			queryClient.clear();
-			setOOcyteData([]);
+			setOocyteData([]);
 		};
 	}, []);
 
 	const handleAddButtonClick = () => navigate(ROUTE_NAMES.OOCYTE_FORM);
+
 	return (
 		<div>
 			{isLoading && <Loader />}
@@ -50,22 +85,7 @@ export const OocytesList = () => {
 					Add a new oocyte for analysis
 				</button>
 			</div>
-			<div className='oocytesList__items-container'>
-				{oocyteData.map(({ oocyteId, oocyteAge, entityDate, patientID, aneuploid }) => {
-					return (
-						<OocyteItem
-							key={oocyteId}
-							initiateDeletion={initiateDeletion}
-							oocyteId={oocyteId || '0'}
-							oocyteAge={oocyteAge || '0'}
-							img='ss'
-							entityDate={entityDate || '0'}
-							patientID={patientID || '0'}
-							aneuploid={aneuploid || false}
-						/>
-					);
-				})}
-			</div>
+			<div className='oocytesList__items-container'>{renderImages()}</div>
 			{isVisible && <DeletePopUp closePopUp={closePopUp} />}
 		</div>
 	);

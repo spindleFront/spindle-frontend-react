@@ -38,13 +38,17 @@
 
 
     &-container {
-      @include align-justify-center;
+      @include align-center;
       color: $whiteColor;
     }
 
     &-image {
       width: 150px;
       height: 120px;
+      border-radius: $borderRadius;
+      @include background-position;
+
+
     }
 
     &-info {

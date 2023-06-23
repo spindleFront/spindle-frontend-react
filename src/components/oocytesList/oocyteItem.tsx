@@ -24,7 +24,7 @@ export const OocyteItem: React.FC<OocyteItemProps> = ({
 			<div className='oocytesList__item'>
 				<div
 					style={{
-						backgroundImage: img,
+						backgroundImage: `url(${img})`,
 					}}
 					className='oocytesList__item-image'
 				></div>
