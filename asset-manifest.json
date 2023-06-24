@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/spindle-frontend-react/static/css/main.a7b174ab.css",
-    "main.js": "/spindle-frontend-react/static/js/main.3cfa6ca7.js",
+    "main.js": "/spindle-frontend-react/static/js/main.ace9b4a8.js",
     "static/media/technologySchema.svg": "/spindle-frontend-react/static/media/technologySchema.313dd752fbc24e740cf9.svg",
     "static/media/oocyte.svg": "/spindle-frontend-react/static/media/oocyte.a0481acec376551fb2e5.svg",
     "static/media/facebookLogo.svg": "/spindle-frontend-react/static/media/facebookLogo.bcf51e10ccd6b0f47e7de1da83ecc7ea.svg",
@@ -28,10 +28,10 @@
     "static/media/leftArrow.svg": "/spindle-frontend-react/static/media/leftArrow.6dd30010c840f07a470a444e4c265c20.svg",
     "static/media/uploadIconNew.svg": "/spindle-frontend-react/static/media/uploadIconNew.ed958b8a61bb1789e0717c57f57228f8.svg",
     "main.a7b174ab.css.map": "/spindle-frontend-react/static/css/main.a7b174ab.css.map",
-    "main.3cfa6ca7.js.map": "/spindle-frontend-react/static/js/main.3cfa6ca7.js.map"
+    "main.ace9b4a8.js.map": "/spindle-frontend-react/static/js/main.ace9b4a8.js.map"
   },
   "entrypoints": [
     "static/css/main.a7b174ab.css",
-    "static/js/main.3cfa6ca7.js"
+    "static/js/main.ace9b4a8.js"
   ]
 }
