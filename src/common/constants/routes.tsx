@@ -1,7 +1,6 @@
 import React from 'react';
 import { RoutesType } from '../interfaces/routesType';
 import { ROUTE_NAMES } from '../enums/routeNames';
-import { UploadPhotoPage } from '../../components/uploadPhotoPage';
 import { AneuploidyDetection } from '../../components/aneuploidyDetection';
 import { Preclinical } from '../../components/preclinical';
 import { About } from '../../components/about';
@@ -10,9 +9,10 @@ import { SignUp } from '../../components/signUp';
 import { OocyteForm } from '../../components/oocyteForm';
 import { OocytesList } from '../../components/oocytesList';
 import { EuploidResult } from '../../components/aneuploid';
+import { NoRegistrationUpload } from '../../components/noRegistrationUpload';
 
 export const ROUTES: RoutesType[] = [
-	{ path: ROUTE_NAMES.UPLOAD, element: <UploadPhotoPage />, hidden: false },
+	{ path: ROUTE_NAMES.UPLOAD, element: <NoRegistrationUpload />, hidden: false },
 	{
 		path: ROUTE_NAMES.DETECTION,
 		element: <AneuploidyDetection />,

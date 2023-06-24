@@ -1,13 +1,21 @@
 import React from 'react';
 import { ProblemsSectionMarkup } from '../problemsSection';
 import { DescriptionSection } from '../descriptionSection';
+import { Header } from '../header';
+import { TryDemoButton } from '../tryDemoButton';
 import './about.scss';
 
 export const About = () => {
 	return (
 		<div>
+			<Header />
 			<section className='about-container'>
-				<h3 className='about-text'>We determine oocyte aneuploidy by non-invasive AI assessment</h3>
+				<div className='about-container-text'>
+					<h3 className='about-text'>
+						We determine oocyte aneuploidy by non-invasive AI assessment
+					</h3>
+					<TryDemoButton />
+				</div>
 				<div className='about-image-container'></div>
 			</section>
 			<section className='embryos-problem'>

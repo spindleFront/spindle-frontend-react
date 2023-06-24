@@ -1,6 +1,5 @@
 {
   "name": "re-spindle",
-  "homepage": "https://spindleFront.github.io/spindle-frontend-react",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

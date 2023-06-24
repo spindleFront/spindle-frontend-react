@@ -5,6 +5,27 @@
   justify-content: space-between;
   align-items: center;
 
+  &__links {
+    display: flex;
+    gap: 20px;
+
+    &-link {
+      text-decoration: none;
+      color: $whiteColor;
+      font-size: $signInFontSize;
+    }
+
+    &-container {
+      @include button-style;
+      box-sizing: border-box;
+      width: 108px;
+      height: 40px;
+      color: $whiteColor;
+      @include align-justify-center;
+    }
+  }
+
+
   &__image-container {
     background-image: url('../../common/assets/icons/loggedUser.svg');
     width: 58px;

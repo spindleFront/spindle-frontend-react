@@ -1,39 +1,23 @@
-import React, { useCallback, useContext, useMemo, useState } from 'react';
+import React, { useContext } from 'react';
 import { Button } from '../button';
 import { Link } from 'react-router-dom';
 import { Input } from '../input';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { FormValues } from '../../common/interfaces/FormValues';
 import { Header } from '../header';
-import { useDropzone } from 'react-dropzone';
-import { useMutation } from '@tanstack/react-query';
-import { sentImage } from '../../services/sentImage';
 import { Loader } from '../loader';
 import { DetectionPhoto } from '../detectionPhoto';
 import { ROUTE_NAMES } from '../../common/enums/routeNames';
 import { FileContext } from '../../common/context/context';
+import { useSetImageForProcessing } from '../../common/hooks/useSetImageForProcessing';
+import { UploadContainer } from '../uploadContainer';
 import './oocyteForm.scss';
 
 export const OocyteForm = () => {
-	const [file, setFile] = useState<File | undefined>(undefined);
+	const { file, background, arrowIcon, mutate, data, isLoading, getRootProps, getInputProps } =
+		useSetImageForProcessing();
+
 	const { setOocyteData } = useContext(FileContext);
-
-	const onDrop = useCallback((acceptedFiles: File[]) => {
-		setFile(acceptedFiles[0]);
-	}, []);
-
-	const { getRootProps, getInputProps } = useDropzone({ onDrop });
-
-	const { mutate, data, isLoading } = useMutation({
-		mutationKey: ['sentImage'],
-		mutationFn: sentImage,
-	});
-
-	const imageUrl = useMemo(() => {
-		if (file instanceof Blob) {
-			return URL.createObjectURL(file);
-		}
-	}, [file, setFile]);
 
 	const {
 		register,
@@ -41,16 +25,11 @@ export const OocyteForm = () => {
 		formState: { errors },
 	} = useForm<FormValues>();
 
-	const background = useMemo(() => file && `url(${imageUrl})`, [file]);
-	const arrowIcon = useMemo(
-		() => (file ? '' : `url(${require('../../common/assets/icons/uploadIconNew.svg').default})`),
-		[file]
-	);
-
 	const onSubmit: SubmitHandler<FormValues> = async (data) => {
 		setOocyteData(data);
 		await mutate(file as File);
 	};
+
 	return (
 		<div className='oocyteForm'>
 			{isLoading && <Loader />}
@@ -69,23 +48,13 @@ export const OocyteForm = () => {
 				</div>
 				<div className='oocyteForm__main-container'>
 					<div className='oocyteForm__uploadContainer'>
-						<div
-							{...getRootProps()}
-							className='oocyteForm__dropArea'
-							style={{
-								backgroundImage: background,
-							}}
-						>
-							<div
-								style={{
-									backgroundImage: arrowIcon,
-								}}
-								className='oocyteForm__dropArea-image'
-							></div>
-							<input {...getInputProps()} />
-
-							<div>{file ? '' : 'Upload an image of oocyte'}</div>
-						</div>
+						<UploadContainer
+							file={file}
+							background={background}
+							getRootProps={getRootProps}
+							getInputProps={getInputProps}
+							arrowIcon={arrowIcon}
+						/>
 					</div>
 
 					<div className='oocyteForm__oocyte-description'>
