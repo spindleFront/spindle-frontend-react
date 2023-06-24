@@ -1,0 +1,37 @@
+{
+  "files": {
+    "main.css": "/react-gh-pages/static/css/main.0451a9b5.css",
+    "main.js": "/react-gh-pages/static/js/main.713221c1.js",
+    "static/media/technologySchema.svg": "/react-gh-pages/static/media/technologySchema.313dd752fbc24e740cf9.svg",
+    "static/media/oocyte.svg": "/react-gh-pages/static/media/oocyte.a0481acec376551fb2e5.svg",
+    "static/media/facebookLogo.svg": "/react-gh-pages/static/media/facebookLogo.bcf51e10ccd6b0f47e7de1da83ecc7ea.svg",
+    "static/media/googleLogo.svg": "/react-gh-pages/static/media/googleLogo.9d157b6c639a9abc028b74d7e9f0ee57.svg",
+    "static/media/logo.svg": "/react-gh-pages/static/media/logo.965640203221bd9c48b22fa713ccd70f.svg",
+    "static/media/loggedUser.svg": "/react-gh-pages/static/media/loggedUser.5ce5d80c046dfbcb6265.svg",
+    "static/media/calendlyLogo.svg": "/react-gh-pages/static/media/calendlyLogo.f1adc92a1b588b9c9c540f90577cc72f.svg",
+    "static/media/uneuploid.svg": "/react-gh-pages/static/media/uneuploid.0e74b931613d6fa03cf26b38dc20e741.svg",
+    "static/media/euploid.svg": "/react-gh-pages/static/media/euploid.4f536c226e6b1108f0f7271c029e0d47.svg",
+    "static/media/Upload.svg": "/react-gh-pages/static/media/Upload.b70a00dacded440500577309d1d2766f.svg",
+    "static/media/step-3.svg": "/react-gh-pages/static/media/step-3.262cd278bdeaf410d162.svg",
+    "static/media/step-2.svg": "/react-gh-pages/static/media/step-2.43dfdd4d34722b5cb45b.svg",
+    "static/media/step-4.svg": "/react-gh-pages/static/media/step-4.b1e330794bb6473669e3.svg",
+    "static/media/step-1.svg": "/react-gh-pages/static/media/step-1.05523572f8ff9601988c.svg",
+    "static/media/formItem-4.svg": "/react-gh-pages/static/media/formItem-4.ed969ea2f04962adce35.svg",
+    "static/media/formItem-3.svg": "/react-gh-pages/static/media/formItem-3.803d3ed7c6b4ce0e396d.svg",
+    "static/media/formItem-2.svg": "/react-gh-pages/static/media/formItem-2.454d230da9ee25691202.svg",
+    "index.html": "/react-gh-pages/index.html",
+    "static/media/deleteIcon.svg": "/react-gh-pages/static/media/deleteIcon.facb83813bcb619bd0e1d4139654b9dc.svg",
+    "static/media/landscapeCircle.svg": "/react-gh-pages/static/media/landscapeCircle.f0b3d826c871146c8f0d10a7d811a387.svg",
+    "static/media/numbersCircle.svg": "/react-gh-pages/static/media/numbersCircle.0677ed487659ae6a7bac2dca1f5b3497.svg",
+    "static/media/termsCircle.svg": "/react-gh-pages/static/media/termsCircle.71da6241890ce31c3f11f8217c5986e7.svg",
+    "static/media/formItem-1.svg": "/react-gh-pages/static/media/formItem-1.0cff6fc14760ac4bc86a.svg",
+    "static/media/leftArrow.svg": "/react-gh-pages/static/media/leftArrow.6dd30010c840f07a470a444e4c265c20.svg",
+    "static/media/uploadIconNew.svg": "/react-gh-pages/static/media/uploadIconNew.ed958b8a61bb1789e0717c57f57228f8.svg",
+    "main.0451a9b5.css.map": "/react-gh-pages/static/css/main.0451a9b5.css.map",
+    "main.713221c1.js.map": "/react-gh-pages/static/js/main.713221c1.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0451a9b5.css",
+    "static/js/main.713221c1.js"
+  ]
+}
