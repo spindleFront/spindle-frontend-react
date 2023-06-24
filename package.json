@@ -1,5 +1,6 @@
 {
   "name": "re-spindle",
+  "homepage": "https://spindleFront.github.io/spindle-frontend-react",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -29,6 +30,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -49,6 +52,7 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.55.0",
     "@typescript-eslint/parser": "^5.55.0",
+    "gh-pages": "^5.0.0",
     "prettier": "2.8.4",
     "typescript": "^5.0.2"
   }
