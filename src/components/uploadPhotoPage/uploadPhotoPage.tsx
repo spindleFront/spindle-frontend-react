@@ -3,7 +3,6 @@ import { useDropzone } from 'react-dropzone';
 import { sentImage } from '../../services/sentImage';
 import { Logo } from '../logo';
 import { useMutation } from '@tanstack/react-query';
-import { DetectionPhoto } from '../detectionPhoto';
 import { Loader } from '../loader';
 import './uploadPhotoPage.scss';
 
@@ -39,7 +38,7 @@ export const UploadPhotoPage = () => {
 					</div>
 					<div className='upload-text'>Upload a photo of your oocyte</div>
 				</form>
-				<DetectionPhoto file={file as File} data={data} />
+				{/*<DetectionPhoto file={file as File} data={data} />*/}
 			</div>
 		</div>
 	);

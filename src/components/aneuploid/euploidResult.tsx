@@ -39,18 +39,13 @@ export const EuploidResult = () => {
 					</Link>
 				</div>
 				<div className='oocyteForm__main-container'>
-					<div className='oocyteForm__uploadContainer'>
-						<div
-							style={{
-								borderColor: isSpindleDetected
-									? 'rgba(66, 232, 224, 0.7)'
-									: 'rgba(213, 54, 91, 0.7)',
-								backgroundImage: `url(${file})`,
-							}}
-							className='oocyteForm__dropArea'
-						></div>
-					</div>
-
+					<div
+						className='result__uploadContainer'
+						style={{
+							borderColor: isSpindleDetected ? 'rgba(66, 232, 224, 0.7)' : 'rgba(213, 54, 91, 0.7)',
+							backgroundImage: `url(${file})`,
+						}}
+					></div>
 					<div className='oocyteForm__oocyte-description'>
 						<div className='oocyteForm__form'>
 							<div className='oocyteForm__form-container'>

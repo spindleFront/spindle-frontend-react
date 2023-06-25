@@ -116,7 +116,7 @@ export const OocyteForm = () => {
 					</div>
 				</div>
 			</main>
-			<DetectionPhoto file={file as File} data={data} />
+			<DetectionPhoto navigateTo={ROUTE_NAMES.RESULT} file={file as File} data={data} />
 		</div>
 	);
 };

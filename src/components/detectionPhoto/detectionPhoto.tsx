@@ -1,15 +1,17 @@
 import React from 'react';
 import { Data } from '../../common/interfaces/data';
 import { useDetectionPhoto } from './useDetectionPhoto';
+import { ROUTE_NAMES } from '../../common/enums/routeNames';
 import './detectionPhoto.scss';
 
 interface DetectionPhoto {
 	data?: Data;
 	file?: File;
+	navigateTo: ROUTE_NAMES;
 }
 
-export const DetectionPhoto: React.FC<DetectionPhoto> = ({ data, file }) => {
-	const { imageRef, objectUrl, response } = useDetectionPhoto(data, file);
+export const DetectionPhoto: React.FC<DetectionPhoto> = ({ data, file, navigateTo }) => {
+	const { imageRef, objectUrl, response } = useDetectionPhoto(navigateTo, data, file);
 
 	return (
 		<div>

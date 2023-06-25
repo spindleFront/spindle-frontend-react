@@ -8,7 +8,7 @@ import { doc, DocumentData, setDoc } from 'firebase/firestore';
 import { db } from '../../firebase';
 import { ROUTE_NAMES } from '../../common/enums/routeNames';
 
-export const useDetectionPhoto = (data?: Data, file?: File) => {
+export const useDetectionPhoto = (navigateTo: ROUTE_NAMES, data?: Data, file?: File) => {
 	const navigate = useNavigate();
 	const imageRef = createRef();
 	const id = window.localStorage.getItem('id');
@@ -46,7 +46,7 @@ export const useDetectionPhoto = (data?: Data, file?: File) => {
 		if (image) {
 			setFile(image);
 			uploadDetectionImage(image);
-			navigate(ROUTE_NAMES.RESULT);
+			navigate(navigateTo);
 		}
 	}, [image]);
 
