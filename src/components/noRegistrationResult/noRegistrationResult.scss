@@ -1,0 +1,56 @@
+@import "../../common/styles/variables";
+
+.unregistered {
+
+  &__container {
+    margin-top: 100px;
+    @include align-justify-center;
+    flex-direction: column;
+  }
+
+  &__result-image {
+    @include image-container;
+  }
+
+  &__result-background {
+    background-color: $chevronBGColor;
+    padding: 30px 36px;
+    border-radius: $borderRadius;
+  }
+
+  &__result {
+    margin-top: 20px;
+    @include align-justify-center;
+  }
+
+  &__access-button-container {
+    margin-top: 30px;
+  }
+
+  &__access-button {
+    color: $whiteColor;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 16px;
+    background-color: $turquoiseWithOpacity;
+    border-radius: $borderRadius;
+    width: 250px;
+    height: 40px;
+    @include align-justify-center;
+  }
+}
+
+.aneuploid-img {
+  background-image: url("../../common/assets/icons/uneuploid.svg");
+  width: 132px;
+  height: 30px;
+  @include background-position;
+}
+
+.euploid-img {
+  background-image: url("../../common/assets/icons/euploid.svg");
+  width: 110px;
+  height: 30px;
+  @include background-position;
+}

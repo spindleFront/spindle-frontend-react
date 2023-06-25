@@ -4,6 +4,8 @@ import { useSetImageForProcessing } from '../../common/hooks/useSetImageForProce
 import { Loader } from '../loader';
 import { UploadContainer } from '../uploadContainer';
 import { Button } from '../button';
+import { DetectionPhoto } from '../detectionPhoto';
+import { ROUTE_NAMES } from '../../common/enums/routeNames';
 import './noRegistrationUpload.scss';
 
 export const NoRegistrationUpload = () => {
@@ -34,6 +36,11 @@ export const NoRegistrationUpload = () => {
 					</div>
 				</div>
 			</div>
+			<DetectionPhoto
+				navigateTo={ROUTE_NAMES.UNREGISTERED_RESULT}
+				data={data}
+				file={file as File}
+			/>
 		</div>
 	);
 };

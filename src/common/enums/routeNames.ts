@@ -7,5 +7,6 @@ export enum ROUTE_NAMES {
 	OOCYTE_FORM = '/upload-form',
 	OOCYTES_LIST = '/oocytes-list',
 	RESULT = '/result',
+	UNREGISTERED_RESULT = '/unregistered-result',
 	HOME = '/',
 }

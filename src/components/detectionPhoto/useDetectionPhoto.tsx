@@ -27,8 +27,8 @@ export const useDetectionPhoto = (navigateTo: ROUTE_NAMES, data?: Data, file?: F
 	}, [data]);
 
 	const uploadDetectionImage = async (image: string) => {
-		await uploadString(storageRef, image, 'data_url').then((snapshot) => {});
 		if (id) {
+			await uploadString(storageRef, image, 'data_url').then((snapshot) => {});
 			await setDoc<DocumentData>(doc(db, `${id}`, oocyteData?.oocyteId as string), {
 				...oocyteData,
 				aneuploid: response ? true : false,
@@ -43,9 +43,13 @@ export const useDetectionPhoto = (navigateTo: ROUTE_NAMES, data?: Data, file?: F
 	}, [file, data]);
 
 	useEffect(() => {
-		if (image) {
+		//if user is registered saving photo to a database
+		if (image && id) {
 			setFile(image);
 			uploadDetectionImage(image);
+		}
+		if (image) {
+			setFile(image);
 			navigate(navigateTo);
 		}
 	}, [image]);

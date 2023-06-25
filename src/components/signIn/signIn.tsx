@@ -5,7 +5,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { FormValues } from '../../common/interfaces/FormValues';
 import { Button } from '../button';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ROUTE_NAMES } from '../../common/enums/routeNames';
 import { auth } from '../../firebase';
 import { googleAuth } from '../../common/auth/googleAuth/googleAuth';
@@ -89,9 +89,9 @@ export const SignIn = () => {
 				</form>
 			</div>
 			<div className='signIn__noRegistration'>
-				<button className='signIn__noRegistration-button' type='button'>
+				<Link to={ROUTE_NAMES.UPLOAD} className='signIn__noRegistration-button' type='button'>
 					Proceed without registration
-				</button>
+				</Link>
 			</div>
 		</main>
 	);

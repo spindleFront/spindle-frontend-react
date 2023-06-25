@@ -71,6 +71,7 @@
   &__noRegistration-button {
     @include button-style;
     @include align-justify-center;
+    text-decoration: none;
     cursor: pointer;
     width: 300px;
     height: 50px;

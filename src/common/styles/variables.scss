@@ -182,5 +182,13 @@ $signInFontSize: 14px;
   left: 50%;
 }
 
+@mixin image-container {
+  border-radius: $borderRadius;
+  width: 350px;
+  height: 250px;
+  border: 4px solid $whiteColor;
+  @include background-position;
+}
+
 
 

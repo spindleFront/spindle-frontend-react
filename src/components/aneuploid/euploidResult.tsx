@@ -1,27 +1,12 @@
-import React, { useContext, useEffect, useMemo } from 'react';
+import React from 'react';
 import { Header } from '../header';
 import { Link } from 'react-router-dom';
 import { ROUTE_NAMES } from '../../common/enums/routeNames';
-import { queryClient } from '../../index';
-import { FileContext } from '../../common/context/context';
+import { useResultHook } from '../../common/hooks/useResult';
 import './euploidResult.scss';
 
 export const EuploidResult = () => {
-	const mutationCache = queryClient.getMutationCache().getAll();
-	const { file, oocyteData } = useContext(FileContext);
-
-	const isSpindleDetected = useMemo(() => {
-		if (mutationCache.length > 0) {
-			// @ts-ignore
-			return Object.keys(mutationCache[0].state.data?.data).length > 0;
-		}
-	}, [mutationCache]);
-
-	useEffect(() => {
-		return () => {
-			queryClient.clear();
-		};
-	}, []);
+	const { file, oocyteData, isSpindleDetected, borderColor } = useResultHook();
 
 	return (
 		<>
@@ -42,7 +27,7 @@ export const EuploidResult = () => {
 					<div
 						className='result__uploadContainer'
 						style={{
-							borderColor: isSpindleDetected ? 'rgba(66, 232, 224, 0.7)' : 'rgba(213, 54, 91, 0.7)',
+							borderColor: borderColor,
 							backgroundImage: `url(${file})`,
 						}}
 					></div>

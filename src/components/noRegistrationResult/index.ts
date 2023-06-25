@@ -1,0 +1,1 @@
+export { NoRegistrationResult } from './noRegistrationResult';
