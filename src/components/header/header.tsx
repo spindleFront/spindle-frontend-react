@@ -3,13 +3,12 @@ import { Logo } from '../logo';
 import { Button } from '../button';
 import { getAuth, signOut } from 'firebase/auth';
 import { ROUTE_NAMES } from '../../common/enums/routeNames';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { queryClient } from '../../index';
 import './header.scss';
 
 export const Header = () => {
 	const navigate = useNavigate();
-	const location = useLocation();
 	const email = localStorage.getItem('user');
 
 	const logOut = () => {
@@ -43,11 +42,6 @@ export const Header = () => {
 							</Link>
 						</div>
 					</>
-				)}
-				{location.pathname !== ROUTE_NAMES.HOME && (
-					<Link className='header__links-link' to={ROUTE_NAMES.HOME}>
-						Home
-					</Link>
 				)}
 			</div>
 			{email && (
