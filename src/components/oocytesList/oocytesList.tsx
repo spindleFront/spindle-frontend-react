@@ -1,43 +1,62 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { Header } from '../header';
 import { useNavigate } from 'react-router-dom';
 import { ROUTE_NAMES } from '../../common/enums/routeNames';
 import { DeletePopUp } from '../deletePopUp';
-import { collection, getDocs, query } from 'firebase/firestore';
+import { deleteDoc, doc } from 'firebase/firestore';
 import { db } from '../../firebase';
-import { useQuery } from '@tanstack/react-query';
 import { Loader } from '../loader';
-import { FormValues } from '../../common/interfaces/FormValues';
-import { queryClient } from '../../index';
 import { OocyteItem } from './oocyteItem';
-import { getDownloadURL, getStorage, ref } from 'firebase/storage';
+import { deleteObject, getStorage, ref } from 'firebase/storage';
+import { FormValues } from '../../common/interfaces/FormValues';
+import { useLoadListOfOocytes } from '../../common/hooks/useLoadListOfOocytes';
 import './oocytesList.scss';
 
 export const OocytesList = () => {
 	const id = window.localStorage.getItem('id') || '';
+	const { setOocytesList, oocytesList, isLoading } = useLoadListOfOocytes(id);
+	const [dataForDeletion, setDataForDeletion] = useState<{ id: string; oocyteId: string }>({
+		id: '',
+		oocyteId: '',
+	});
 	const navigate = useNavigate();
-	const [oocyteData, setOocyteData] = useState<Partial<FormValues>[] | []>([]);
 	const [isVisible, setIsVisible] = useState(false);
-	const initiateDeletion = () => setIsVisible(true);
-
-	const closePopUp = useCallback(() => setIsVisible(false), []);
-
-	const getQuery = query(collection(db, id));
-
-	const getData = async (): Promise<any> => await getDocs(getQuery);
-
-	const { data, isLoading } = useQuery({ queryKey: ['oocytes'], queryFn: getData });
+	const initiateDeletion = (oocyteId: string) => {
+		setDataForDeletion({ id, oocyteId });
+		setIsVisible(true);
+	};
 
 	const storage = getStorage();
 
-	const getImageUrls = async (oocyteID: string) => {
-		return await getDownloadURL(ref(storage, `${id}/${oocyteID}`));
+	const removeItemFromStorage = async () => {
+		// Create a reference for the file to delete
+		const desertRef = ref(storage, `${dataForDeletion.id}/${dataForDeletion.oocyteId}`);
+
+		// Delete the file
+		deleteObject(desertRef)
+			.then(() => {
+				// File deleted successfully
+			})
+			.catch((error) => {
+				// Uh-oh, an error occurred!
+			});
+
+		await deleteDoc(doc(db, dataForDeletion.id, dataForDeletion.oocyteId));
+		setOocytesList((prevState: Partial<FormValues>[]) =>
+			prevState.filter((item: Partial<FormValues>) => item?.oocyteId !== dataForDeletion.oocyteId)
+		);
+		setIsVisible(false);
 	};
+
+	const closePopUp = useCallback(() => {
+		setDataForDeletion({ id: '', oocyteId: '' });
+		setIsVisible(false);
+	}, []);
 
 	const renderImages = () => {
 		return (
 			<>
-				{oocyteData.map(({ oocyteId, oocyteAge, entityDate, patientID, aneuploid, image }) => {
+				{oocytesList.map(({ oocyteId, oocyteAge, entityDate, patientID, aneuploid, image }) => {
 					return (
 						<OocyteItem
 							key={oocyteId}
@@ -55,25 +74,6 @@ export const OocytesList = () => {
 		);
 	};
 
-	useEffect(() => {
-		if (data) {
-			data.forEach(async (doc: any) => {
-				const image = await getImageUrls(doc.data().oocyteId);
-
-				setOocyteData((state) => {
-					return [...state, { ...doc.data(), image }];
-				});
-			});
-		}
-	}, [data]);
-
-	useEffect(() => {
-		return () => {
-			queryClient.clear();
-			setOocyteData([]);
-		};
-	}, []);
-
 	const handleAddButtonClick = () => navigate(ROUTE_NAMES.OOCYTE_FORM);
 
 	return (
@@ -86,7 +86,7 @@ export const OocytesList = () => {
 				</button>
 			</div>
 			<div className='oocytesList__items-container'>{renderImages()}</div>
-			{isVisible && <DeletePopUp closePopUp={closePopUp} />}
+			{isVisible && <DeletePopUp removeItem={removeItemFromStorage} closePopUp={closePopUp} />}
 		</div>
 	);
 };

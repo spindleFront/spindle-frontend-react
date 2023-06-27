@@ -9,6 +9,12 @@ interface ContextProps {
 export const Context: React.FC<ContextProps> = ({ children }) => {
 	const [file, setFile] = useState<FileContextInterface>();
 	const [oocyteData, setOocyteData] = useState<Partial<FormValues>>();
-	const value = { file, setFile, oocyteData, setOocyteData };
+
+	const value = {
+		file,
+		setFile,
+		oocyteData,
+		setOocyteData,
+	};
 	return <FileContext.Provider value={value}>{children}</FileContext.Provider>;
 };

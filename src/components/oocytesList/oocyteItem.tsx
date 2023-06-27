@@ -1,7 +1,7 @@
 import React from 'react';
 
 export interface OocyteItemProps {
-	initiateDeletion: () => void;
+	initiateDeletion: (oocyteId: string) => void;
 	patientID?: string;
 	entityDate?: string;
 	oocyteId?: string;
@@ -57,7 +57,11 @@ export const OocyteItem: React.FC<OocyteItemProps> = ({
 					}}
 				></div>
 				<div>
-					<button onClick={initiateDeletion} className='oocytesList__item-delete' type='button'>
+					<button
+						onClick={() => initiateDeletion(oocyteId as string)}
+						className='oocytesList__item-delete'
+						type='button'
+					>
 						<img
 							alt='Trash icon'
 							src={require('../../common/assets/icons/deleteIcon.svg').default}

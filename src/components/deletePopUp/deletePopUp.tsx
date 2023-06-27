@@ -4,9 +4,10 @@ import './deletePopUp.scss';
 
 interface DeletePopUpProps {
 	closePopUp: () => void;
+	removeItem: () => void;
 }
 
-export const DeletePopUp: React.FC<DeletePopUpProps> = ({ closePopUp }) => {
+export const DeletePopUp: React.FC<DeletePopUpProps> = ({ closePopUp, removeItem }) => {
 	return (
 		<div className='popUp__container'>
 			<div className='popUp__message-container'>
@@ -15,7 +16,7 @@ export const DeletePopUp: React.FC<DeletePopUpProps> = ({ closePopUp }) => {
 					to continue with this action.
 				</div>
 				<div className='popUp__buttons-container'>
-					<Button style='contained' text='Delete' type='button' />
+					<Button onClick={removeItem} style='contained' text='Delete' type='button' />
 					<Button onClick={closePopUp} style='regular' text='Keep' type='button' />
 				</div>
 			</div>
