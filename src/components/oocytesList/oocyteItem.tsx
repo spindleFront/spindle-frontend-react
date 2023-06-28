@@ -3,11 +3,12 @@ import React from 'react';
 export interface OocyteItemProps {
 	initiateDeletion: (oocyteId: string) => void;
 	patientID?: string;
-	entityDate?: string;
+	entityDate?: number;
 	oocyteId?: string;
 	oocyteAge?: string;
 	img: string;
 	aneuploid?: boolean;
+	photoId?: string;
 }
 
 export const OocyteItem: React.FC<OocyteItemProps> = ({
@@ -18,7 +19,17 @@ export const OocyteItem: React.FC<OocyteItemProps> = ({
 	patientID,
 	img,
 	aneuploid,
+	photoId,
 }) => {
+	const formatDate = (date: number | undefined) => {
+		if (date) {
+			return new Date(date).toLocaleString('en-US', {
+				month: 'numeric',
+				day: 'numeric',
+				year: 'numeric',
+			});
+		}
+	};
 	return (
 		<div className='oocytesList__wrap'>
 			<div className='oocytesList__item'>
@@ -35,7 +46,7 @@ export const OocyteItem: React.FC<OocyteItemProps> = ({
 					</div>
 					<div className='oocytesList__item-container'>
 						<div className='oocytesList__icon-2'></div>
-						<div>{entityDate}</div>
+						<div>{formatDate(entityDate)}</div>
 					</div>
 					<div className='oocytesList__item-container'>
 						<div className='oocytesList__icon-3'></div>
@@ -58,7 +69,7 @@ export const OocyteItem: React.FC<OocyteItemProps> = ({
 				></div>
 				<div>
 					<button
-						onClick={() => initiateDeletion(oocyteId as string)}
+						onClick={() => initiateDeletion(photoId as string)}
 						className='oocytesList__item-delete'
 						type='button'
 					>

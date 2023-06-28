@@ -17,6 +17,14 @@
     font-size: $signInFontSize;
     color: $whiteColor;
     cursor: pointer;
+
+    &-plus {
+      width: 30px;
+      height: 30px;
+      margin-right: 10px;
+      @include background-position;
+      background-image: url("../../common/assets/icons/Add_icon.svg");
+    }
   }
 
   &__items-container {
@@ -47,8 +55,6 @@
       height: 120px;
       border-radius: $borderRadius;
       @include background-position;
-
-
     }
 
     &-info {

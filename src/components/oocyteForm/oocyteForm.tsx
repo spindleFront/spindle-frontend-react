@@ -11,9 +11,11 @@ import { ROUTE_NAMES } from '../../common/enums/routeNames';
 import { FileContext } from '../../common/context/context';
 import { useSetImageForProcessing } from '../../common/hooks/useSetImageForProcessing';
 import { UploadContainer } from '../uploadContainer';
+import { v4 as uuid4 } from 'uuid';
 import './oocyteForm.scss';
 
 export const OocyteForm = () => {
+	const photoId = uuid4();
 	const { file, background, arrowIcon, mutate, data, isLoading, getRootProps, getInputProps } =
 		useSetImageForProcessing();
 
@@ -26,7 +28,8 @@ export const OocyteForm = () => {
 	} = useForm<FormValues>();
 
 	const onSubmit: SubmitHandler<FormValues> = async (data) => {
-		setOocyteData(data);
+		const entityDate = new Date().getTime();
+		setOocyteData({ ...data, photoId, entityDate });
 		await mutate(file as File);
 	};
 
@@ -75,30 +78,16 @@ export const OocyteForm = () => {
 
 								<div className='oocyteForm__form-item'>
 									<div className='oocyteForm__form-item-label'>
-										<div className='formItem-2'></div>
-										<div className='oocyteForm__form-item-text'>Entity Date</div>
-									</div>
-									<Input
-										register={register}
-										type='text'
-										name='entityDate'
-										placeholder='XX/YY/2023'
-									/>
-								</div>
-
-								<div className='oocyteForm__form-item'>
-									<div className='oocyteForm__form-item-label'>
 										<div className='formItem-3'></div>
-										<div className='oocyteForm__form-item-text'>Oocyte ID</div>
+										<div className='oocyteForm__form-item-text'>Oocyte Number</div>
 									</div>
 									<Input
 										required={true}
 										register={register}
 										type='text'
-										name='oocyteId'
-										placeholder='Oocyte ID'
+										name='oocyteNumber'
+										placeholder='Oocyte Number'
 									/>
-									{errors.oocyteId && <span className='error'>This field is required!</span>}
 								</div>
 
 								<div className='oocyteForm__form-item'>

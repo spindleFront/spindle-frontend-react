@@ -43,7 +43,7 @@ export const OocytesList = () => {
 
 		await deleteDoc(doc(db, dataForDeletion.id, dataForDeletion.oocyteId));
 		setOocytesList((prevState: Partial<FormValues>[]) =>
-			prevState.filter((item: Partial<FormValues>) => item?.oocyteId !== dataForDeletion.oocyteId)
+			prevState.filter((item) => item?.photoId !== dataForDeletion.oocyteId)
 		);
 		setIsVisible(false);
 	};
@@ -56,20 +56,23 @@ export const OocytesList = () => {
 	const renderImages = () => {
 		return (
 			<>
-				{oocytesList.map(({ oocyteId, oocyteAge, entityDate, patientID, aneuploid, image }) => {
-					return (
-						<OocyteItem
-							key={oocyteId}
-							initiateDeletion={initiateDeletion}
-							oocyteId={oocyteId || '0'}
-							oocyteAge={oocyteAge || '0'}
-							img={image || ''}
-							entityDate={entityDate || '0'}
-							patientID={patientID || '0'}
-							aneuploid={aneuploid || false}
-						/>
-					);
-				})}
+				{oocytesList.map(
+					({ photoId, oocyteAge, entityDate, patientID, aneuploid, image, oocyteNumber }) => {
+						return (
+							<OocyteItem
+								key={photoId}
+								photoId={photoId || '0'}
+								initiateDeletion={initiateDeletion}
+								oocyteId={oocyteNumber || '0'}
+								oocyteAge={oocyteAge || '0'}
+								img={image || ''}
+								entityDate={entityDate || 0}
+								patientID={patientID || '0'}
+								aneuploid={aneuploid || false}
+							/>
+						);
+					}
+				)}
 			</>
 		);
 	};
@@ -82,6 +85,7 @@ export const OocytesList = () => {
 			<Header />
 			<div className='oocytesList__addButton-container'>
 				<button className='oocytesList__addButton' onClick={handleAddButtonClick} type='button'>
+					<span className='oocytesList__addButton-plus'></span>
 					Add a new oocyte for analysis
 				</button>
 			</div>

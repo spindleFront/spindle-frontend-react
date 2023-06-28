@@ -17,7 +17,7 @@ export const useDetectionPhoto = (navigateTo: ROUTE_NAMES, data?: Data, file?: F
 	const [image, takeScreenshot] = useScreenshot();
 
 	const storage = getStorage();
-	const storageRef = ref(storage, `${id}/${oocyteData?.oocyteId}`);
+	const storageRef = ref(storage, `${id}/${oocyteData?.photoId}`);
 
 	const response = useMemo(() => {
 		if (data) {
@@ -29,7 +29,7 @@ export const useDetectionPhoto = (navigateTo: ROUTE_NAMES, data?: Data, file?: F
 	const uploadDetectionImage = async (image: string) => {
 		if (id) {
 			await uploadString(storageRef, image, 'data_url').then((snapshot) => {});
-			await setDoc<DocumentData>(doc(db, `${id}`, oocyteData?.oocyteId as string), {
+			await setDoc<DocumentData>(doc(db, `${id}`, oocyteData?.photoId as string), {
 				...oocyteData,
 				aneuploid: response ? true : false,
 			});

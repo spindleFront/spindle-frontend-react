@@ -10,7 +10,7 @@ export interface FileContextInterface {
 
 const oocyteData = {
 	patientID: '',
-	entityDate: '',
+	entityDate: 0,
 	oocyteId: '',
 	oocyteAge: '',
 };

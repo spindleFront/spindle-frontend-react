@@ -53,9 +53,9 @@ export const EuploidResult = () => {
 								<div className='oocyteForm__form-item'>
 									<div className='oocyteForm__form-item-label'>
 										<div className='formItem-3'></div>
-										<div className='oocyteForm__form-item-text'>Oocyte ID</div>
+										<div className='oocyteForm__form-item-text'>Oocyte Number</div>
 									</div>
-									<div className='response-data-container'>{oocyteData?.oocyteId}</div>
+									<div className='response-data-container'>{oocyteData?.oocyteNumber}</div>
 								</div>
 
 								<div className='oocyteForm__form-item'>

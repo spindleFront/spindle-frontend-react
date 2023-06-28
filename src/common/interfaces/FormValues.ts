@@ -3,9 +3,10 @@ export interface FormValues {
 	password: string;
 	passwordRepeat?: string;
 	patientID: string;
-	entityDate: string;
-	oocyteId: string;
+	entityDate: number;
+	oocyteNumber: string;
 	oocyteAge: string;
 	aneuploid: boolean;
 	image: string;
+	photoId: string;
 }

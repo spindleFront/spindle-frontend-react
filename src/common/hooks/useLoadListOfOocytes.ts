@@ -24,7 +24,7 @@ export const useLoadListOfOocytes = (id: string) => {
 	useEffect(() => {
 		if (data) {
 			data.forEach(async (doc: any) => {
-				const image = await getImageUrls(doc.data().oocyteId);
+				const image = await getImageUrls(doc.data().photoId);
 				setOocytesList((state) => {
 					return [...state, { ...doc.data(), image }];
 				});
