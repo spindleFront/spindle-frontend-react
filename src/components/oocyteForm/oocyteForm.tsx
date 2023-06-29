@@ -93,7 +93,7 @@ export const OocyteForm = () => {
 								<div className='oocyteForm__form-item'>
 									<div className='oocyteForm__form-item-label'>
 										<div className='formItem-4'></div>
-										<div className='oocyteForm__form-item-text'>Oocyte Age</div>
+										<div className='oocyteForm__form-item-text'>Patient Age</div>
 									</div>
 									<Input register={register} type='text' name='oocyteAge' placeholder='35 years' />
 								</div>

@@ -26,7 +26,9 @@ export const Header = () => {
 	return (
 		<header className='header'>
 			<div>
-				<Logo />
+				<Link to={ROUTE_NAMES.HOME}>
+					<Logo />
+				</Link>
 			</div>
 			<div className='header__links'>
 				{!email && (

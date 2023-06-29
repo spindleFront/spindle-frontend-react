@@ -28,9 +28,14 @@
     margin-top: 100px;
   }
 
+  &__oocyte-description {
+    width: 350px;
+  }
+
   &__form-container {
-    @include grid-with-two-columns;
-    gap: 16px;
+    @include flex-align-center;
+    flex-direction: row;
+    row-gap: 20px;
 
   }
 
@@ -59,15 +64,6 @@
     @include flex-align-center;
   }
 
-}
-
-.error {
-  display: block;
-  margin-top: 10px;
-  color: $landscapeColor;
-  font-size: 10px;
-  font-weight: bold;
-  text-align: center;
 }
 
 @for $i from 1 through 4 {
