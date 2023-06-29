@@ -16,6 +16,9 @@
     background-color: $chevronBGColor;
     padding: 30px 36px;
     border-radius: $borderRadius;
+    @include align-justify-center;
+    flex-direction: column;
+    width: 400px;
   }
 
   &__result {
@@ -53,4 +56,11 @@
   width: 110px;
   height: 30px;
   @include background-position;
+}
+
+.euploid-noDetection {
+  color: $yellowColor;
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
 }
