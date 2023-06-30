@@ -68,7 +68,7 @@ export const OocytesList = () => {
 								img={image || ''}
 								entityDate={entityDate || 0}
 								patientID={patientID || '0'}
-								aneuploid={aneuploid || false}
+								aneuploid={aneuploid || '0'}
 							/>
 						);
 					}

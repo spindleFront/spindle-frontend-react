@@ -31,7 +31,7 @@ export const useDetectionPhoto = (navigateTo: ROUTE_NAMES, data?: Data, file?: F
 			await uploadString(storageRef, image, 'data_url').then((snapshot) => {});
 			await setDoc<DocumentData>(doc(db, `${id}`, oocyteData?.photoId as string), {
 				...oocyteData,
-				aneuploid: response ? true : false,
+				aneuploid: response?.labelName || 'not detected',
 			});
 		}
 	};

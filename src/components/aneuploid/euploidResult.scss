@@ -8,6 +8,21 @@
   &__uploadContainer {
     @include image-container;
   }
+
+  &__form-container {
+    padding: 20px 50px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    color: $whiteColor;
+  }
+
+  &__form-item {
+    &-label {
+      @include align-center;
+      margin-bottom: 15px;
+    }
+  }
 }
 
 

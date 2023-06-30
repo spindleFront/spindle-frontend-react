@@ -26,6 +26,7 @@
   &__main-container {
     @include grid-with-two-columns;
     margin-top: 100px;
+    gap: 180px;
   }
 
   &__oocyte-description {
@@ -34,7 +35,7 @@
 
   &__form-container {
     @include flex-align-center;
-    flex-direction: row;
+    flex-direction: column;
     row-gap: 20px;
 
   }
@@ -53,10 +54,6 @@
       align-items: center;
       color: $whiteColor;
     }
-
-    &-text {
-      margin-left: 10px;
-    }
   }
 
   &__form-button-container {
@@ -69,6 +66,7 @@
 @for $i from 1 through 4 {
   .formItem-#{$i} {
     background-image: url("../../common/assets/icons/formItem-#{$i}.svg");
+    margin-right: 10px;
     width: 15px;
     height: 15px;
     background-size: cover;

@@ -82,7 +82,6 @@ export const OocyteForm = () => {
 										<div className='oocyteForm__form-item-text'>Oocyte Number</div>
 									</div>
 									<Input
-										required={true}
 										register={register}
 										type='text'
 										name='oocyteNumber'

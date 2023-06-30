@@ -3,6 +3,7 @@ import { Header } from '../header';
 import { Link } from 'react-router-dom';
 import { ROUTE_NAMES } from '../../common/enums/routeNames';
 import { useResultHook } from '../../common/hooks/useResult';
+import { markupOfDetection } from '../../common/helpers/markupOfDetection';
 import './euploidResult.scss';
 
 export const EuploidResult = () => {
@@ -33,45 +34,33 @@ export const EuploidResult = () => {
 					></div>
 					<div className='oocyteForm__oocyte-description'>
 						<div className='oocyteForm__form'>
-							<div className='oocyteForm__form-container'>
-								<div className='oocyteForm__form-item'>
-									<div className='oocyteForm__form-item-label'>
+							<div className='result__form-container'>
+								<div className='result__form-item'>
+									<div className='result__form-item-label'>
 										<div className='formItem-1'></div>
-										<div className='oocyteForm__form-item-text'>Patient ID</div>
+										<div className='result__form-item-text'>Patient ID</div>
 									</div>
 									<div className='response-data-container'>{oocyteData?.patientID}</div>
 								</div>
 
-								<div className='oocyteForm__form-item'>
-									<div className='oocyteForm__form-item-label'>
-										<div className='formItem-2'></div>
-										<div className='oocyteForm__form-item-text'>Entity Date</div>
-									</div>
-									<div className='response-data-container'>{oocyteData?.entityDate}</div>
-								</div>
-
-								<div className='oocyteForm__form-item'>
-									<div className='oocyteForm__form-item-label'>
+								<div className='result__form-item'>
+									<div className='result__form-item-label'>
 										<div className='formItem-3'></div>
-										<div className='oocyteForm__form-item-text'>Oocyte Number</div>
+										<div className='result__form-item-text'>Oocyte Number</div>
 									</div>
 									<div className='response-data-container'>{oocyteData?.oocyteNumber}</div>
 								</div>
 
-								<div className='oocyteForm__form-item'>
-									<div className='oocyteForm__form-item-label'>
+								<div className='result__form-item'>
+									<div className='result__form-item-label'>
 										<div className='formItem-4'></div>
-										<div className='oocyteForm__form-item-text'>Oocyte Age</div>
+										<div className='result__form-item-text'>Oocyte Age</div>
 									</div>
 									<div className='response-data-container'>{oocyteData?.oocyteAge}</div>
 								</div>
 							</div>
 							<div className='oocyteForm__form-button-container'>
-								{isSpindleDetected ? (
-									<div className='euploid-img'></div>
-								) : (
-									<div className='aneuploid-img'></div>
-								)}
+								{markupOfDetection(isSpindleDetected)}
 							</div>
 						</div>
 					</div>

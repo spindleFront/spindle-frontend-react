@@ -1,4 +1,6 @@
 import React from 'react';
+import { SPINDLE_EUPLOIDY } from '../../common/enums/spindleEuploidy';
+import { formatDate } from '../../common/helpers/formatDate';
 
 export interface OocyteItemProps {
 	initiateDeletion: (oocyteId: string) => void;
@@ -7,7 +9,7 @@ export interface OocyteItemProps {
 	oocyteId?: string;
 	oocyteAge?: string;
 	img: string;
-	aneuploid?: boolean;
+	aneuploid?: string;
 	photoId?: string;
 }
 
@@ -21,14 +23,14 @@ export const OocyteItem: React.FC<OocyteItemProps> = ({
 	aneuploid,
 	photoId,
 }) => {
-	const formatDate = (date: number | undefined) => {
-		if (date) {
-			return new Date(date).toLocaleString('en-US', {
-				month: 'numeric',
-				day: 'numeric',
-				year: 'numeric',
-			});
+	const aneuploidyLabel = () => {
+		if (aneuploid === SPINDLE_EUPLOIDY.ANEUPLOID) {
+			return `url(${require('../../common/assets/icons/uneuploid.svg').default})`;
 		}
+		if (aneuploid === SPINDLE_EUPLOIDY.UEPLOID) {
+			return `url(${require('../../common/assets/icons/euploid.svg').default})`;
+		}
+		return `url(${require('../../common/assets/icons/undetected.svg').default})`;
 	};
 	return (
 		<div className='oocytesList__wrap'>
@@ -62,9 +64,7 @@ export const OocyteItem: React.FC<OocyteItemProps> = ({
 				<div
 					className='oocytesList__item-status'
 					style={{
-						backgroundImage: aneuploid
-							? `url(${require('../../common/assets/icons/euploid.svg').default})`
-							: `url(${require('../../common/assets/icons/uneuploid.svg').default})`,
+						backgroundImage: aneuploidyLabel(),
 					}}
 				></div>
 				<div>
