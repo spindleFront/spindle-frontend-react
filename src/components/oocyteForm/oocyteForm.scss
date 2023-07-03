@@ -23,6 +23,11 @@
     }
   }
 
+  &__uploadContainer {
+    @include align-center;
+    flex-direction: column;
+  }
+
   &__main-container {
     @include grid-with-two-columns;
     margin-top: 100px;
@@ -61,6 +66,22 @@
     @include flex-align-center;
   }
 
+}
+
+.delete-button-container {
+  margin-top: 38px;
+}
+
+.deletePhoto {
+  width: 200px;
+  background-color: transparent;
+  color: $whiteColor;
+  border: 2px solid $turquoiseWithOpacity;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: $borderRadius;
+  padding: 8px 25px;
+  cursor: pointer;
 }
 
 @for $i from 1 through 4 {

@@ -16,22 +16,29 @@ import './oocyteForm.scss';
 
 export const OocyteForm = () => {
 	const photoId = uuid4();
-	const { file, background, arrowIcon, mutate, data, isLoading, getRootProps, getInputProps } =
-		useSetImageForProcessing();
+	const {
+		file,
+		background,
+		arrowIcon,
+		mutate,
+		data,
+		isLoading,
+		getRootProps,
+		getInputProps,
+		setFile,
+	} = useSetImageForProcessing();
 
 	const { setOocyteData } = useContext(FileContext);
 
-	const {
-		register,
-		handleSubmit,
-		formState: { errors },
-	} = useForm<FormValues>();
+	const { register, handleSubmit } = useForm<FormValues>();
 
 	const onSubmit: SubmitHandler<FormValues> = async (data) => {
 		const entityDate = new Date().getTime();
 		setOocyteData({ ...data, photoId, entityDate });
 		await mutate(file as File);
 	};
+
+	const handleAnotherImageClick = () => setFile(undefined);
 
 	return (
 		<div className='oocyteForm'>
@@ -58,6 +65,13 @@ export const OocyteForm = () => {
 							getInputProps={getInputProps}
 							arrowIcon={arrowIcon}
 						/>
+						{file && (
+							<div className='delete-button-container'>
+								<button onClick={handleAnotherImageClick} className='deletePhoto' type='button'>
+									Upload another image
+								</button>
+							</div>
+						)}
 					</div>
 
 					<div className='oocyteForm__oocyte-description'>
