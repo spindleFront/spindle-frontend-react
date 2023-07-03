@@ -82,6 +82,49 @@
   }
 }
 
+.three-cards {
+  margin: 100px 140px 100px;
+
+  &__container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 65px;
+  }
+
+  &__card {
+    text-align: center;
+    padding: 45px 34px;
+    background: $chevronBGColor;
+    font-size: 18px;
+    color: $whiteColor;
+    font-weight: bold;
+    border-radius: $borderRadius;
+
+    & > * {
+      margin-bottom: 30px;
+    }
+
+    &-header {
+      color: $pinkTextColor;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    &-footer {
+
+      &-yellow {
+        color: $yellowTextColor;
+      }
+
+      &-red {
+        color: $pinkTextColor;
+      }
+    }
+
+
+  }
+}
+
 .technology-schema {
   width: 1238px;
   height: 691px;

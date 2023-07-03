@@ -36,10 +36,47 @@ export const About = () => {
 						<div className='embryos-problem__logo'></div>
 						<div className='embryos-problem__does'>does</div>
 					</div>
-
 					<TryDemoButton />
 				</div>
 			</section>
+
+			<section className='three-cards'>
+				<div className='three-cards__container'>
+					<div className='three-cards__card'>
+						<div className='three-cards__card-header'>Aneuploid embryos is a big problem</div>
+						<div className='three-cards__card-main'>
+							Aneuploid embryo has chromosomal pathologies
+						</div>
+						<div className='three-cards__card-main-footer'>95% of them doesn’t survive</div>
+					</div>
+
+					<div className='three-cards__card'>
+						<div className='three-cards__card-header'>There are a lot of them</div>
+						<div className='three-cards__card-main'>Aneuploid embryo rate for women age:</div>
+						<div className='three-cards__card-footer'>
+							<span className='three-cards__card-footer-yellow'>25-30 - 40%</span>
+							<br />
+							<span className='three-cards__card-footer-red'> 40+ - 90%</span>
+						</div>
+					</div>
+
+					<div className='three-cards__card'>
+						<div className='three-cards__card-header'>
+							There are no accessible ways to find them
+						</div>
+						<div className='three-cards__card-main'>
+							98% of women can not afford genetic diagnostics of their embryos due to price and
+							restrictions
+						</div>
+						<div className='three-cards__card-footer'>
+							<span className='three-cards__card-footer-red'>
+								Assisted reproduction is a lottery for them
+							</span>
+						</div>
+					</div>
+				</div>
+			</section>
+
 			<section className='our-technology'>
 				<h3 className='embryos-problem__header'>Our technology is a solution</h3>
 				<div className='technology-schema'></div>
