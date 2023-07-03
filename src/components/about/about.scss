@@ -1,33 +1,79 @@
 @import '../../common/styles/variables';
 
 .about-container {
-  margin: 102px 0 200px 0;
+  margin: 102px 0 100px 0;
   @include grid-with-two-columns;
 
   &-text {
-    padding: 0 75px;
+    padding: 0 0 0 290px;
   }
 }
 
 .about-text {
   @include big-fonts;
   color: $turquoiseWithOpacity;
-  display: flex;
-  align-items: center;
 }
 
 .about-image-container {
-  border: 10px solid $turquoiseWithOpacity;
   @include circle-radius;
-  @include square-size;
+  width: 300px;
+  height: 300px;
   background-image: url("../../common/assets/icons/oocyte.svg");
   @include background-position;
   margin-left: 40px;
 }
 
 .embryos-problem {
-  height: 900px;
-  margin-bottom: 100px;
+  margin: 0 190px auto;
+
+  &__container {
+    background-color: $chevronBGColor;
+    color: $whiteColor;
+    padding: 53px 31px;
+    border-radius: 4px;
+    font-size: 24px;
+    font-weight: bold;
+
+    & > *:not(:last-child) {
+      margin-bottom: 20px;
+    }
+  }
+
+  &__text {
+    text-align: center;
+
+    &-warning {
+      color: $pinkTextColor;
+    }
+
+  }
+
+  &__logo {
+    background-image: url("../../common/assets/icons/logo.svg");
+    @include background-position;
+    width: 250px;
+    height: 50px;
+  }
+
+  &__footer {
+    padding: 0 50px;
+    margin-top: 20px;
+    @include align-justify-center;
+    justify-content: space-between;
+  }
+
+  &__footer-textContainer {
+    @include align-justify-center
+  }
+
+  &__does {
+    color: $whiteColor;
+    font-size: 44px;
+    font-weight: bold;
+    margin-left: 20px;
+    margin-top: 10px;
+  }
+
 
   &__header {
     text-align: center;

@@ -47,8 +47,8 @@ $yellowColor: #F5951B;
 
 @mixin big-fonts {
   font-weight: 700;
-  font-size: 44px;
-  line-height: 52px;
+  font-size: 24px;
+  line-height: normal;
 }
 
 @mixin square-size {

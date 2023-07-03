@@ -1,5 +1,4 @@
 import React from 'react';
-import { ProblemsSectionMarkup } from '../problemsSection';
 import { DescriptionSection } from '../descriptionSection';
 import { Header } from '../header';
 import { TryDemoButton } from '../tryDemoButton';
@@ -19,8 +18,27 @@ export const About = () => {
 				<div className='about-image-container'></div>
 			</section>
 			<section className='embryos-problem'>
-				<h3 className='embryos-problem__header'>Aneuploid embryos problem</h3>
-				<ProblemsSectionMarkup />
+				<div className='embryos-problem__container'>
+					<div className='embryos-problem__text'>
+						In our fast-paced world women dedicate young years to self-realization, postponing
+						motherhood
+					</div>
+
+					<div className='embryos-problem__text'>
+						When the long-awaited chance to have a baby arrives the body may whisper <br />
+						<span className='embryos-problem__text-warning'>"It's too late"</span>
+					</div>
+
+					<div className='embryos-problem__text'>Can anything be done to stop this fate?</div>
+				</div>
+				<div className='embryos-problem__footer'>
+					<div className='embryos-problem__footer-textContainer'>
+						<div className='embryos-problem__logo'></div>
+						<div className='embryos-problem__does'>does</div>
+					</div>
+
+					<TryDemoButton />
+				</div>
 			</section>
 			<section className='our-technology'>
 				<h3 className='embryos-problem__header'>Our technology is a solution</h3>
