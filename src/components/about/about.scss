@@ -125,6 +125,74 @@
   }
 }
 
+
+.hiw {
+  padding: 0 115px;
+
+  &__header {
+    margin-bottom: 50px;
+    color: $whiteColor;
+    font-size: 34px;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  &__main-grid {
+    @include grid-with-two-columns;
+
+    &-left {
+      @include align-center;
+      flex-direction: column;
+
+
+      &-images {
+        margin-bottom: 30px;
+        @include align-center;
+        column-gap: 25px;
+        font-size: 24px;
+        font-weight: bold;
+      }
+
+      &-subContainer {
+        @include align-justify-center;
+        flex-direction: column;
+      }
+
+      &-text-euploid {
+        color: $turquoiseColor;
+      }
+
+
+      &-text-aneuploid {
+        color: $pinkTextColor;
+      }
+
+      &-footer {
+        color: $whiteColor;
+        font-weight: bold;
+        font-size: 24px;
+      }
+
+      & > div:last-child {
+        margin-top: 20px;
+      }
+
+      @for $i from 1 to 3 {
+        &-image-#{$i} {
+          margin-bottom: 10px;
+          background-image: url("../../common/assets/icons/oocyteImage-#{$i}.svg");
+          width: 185px;
+          height: 185px;
+          @include background-position
+        }
+      }
+    }
+  }
+
+
+}
+
+
 .technology-schema {
   width: 1238px;
   height: 691px;

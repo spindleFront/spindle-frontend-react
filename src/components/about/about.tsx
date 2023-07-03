@@ -1,5 +1,4 @@
 import React from 'react';
-import { DescriptionSection } from '../descriptionSection';
 import { Header } from '../header';
 import { TryDemoButton } from '../tryDemoButton';
 import './about.scss';
@@ -78,10 +77,31 @@ export const About = () => {
 			</section>
 
 			<section className='our-technology'>
-				<h3 className='embryos-problem__header'>Our technology is a solution</h3>
 				<div className='technology-schema'></div>
 			</section>
-			<DescriptionSection />
+
+			<section className='hiw'>
+				<div className='hiw__header'>How it works</div>
+				<div className='hiw__main-grid'>
+					<div className='hiw__main-grid-left'>
+						<div className='hiw__main-grid-left-images'>
+							<div className='hiw__main-grid-left-subContainer'>
+								<div className='hiw__main-grid-left-image-1'></div>
+								<div className='hiw__main-grid-left-text-euploid'>Euploid</div>
+							</div>
+							<div className='hiw__main-grid-left-subContainer'>
+								<div className='hiw__main-grid-left-image-2'></div>
+								<div className='hiw__main-grid-left-text-aneuploid'>Aneuploid</div>
+							</div>
+						</div>
+
+						<div className='hiw__main-grid-left-footer'>ReSpindle AI classified spindles</div>
+						<div className='hiw__main-grid-left-footer'>Results validated by NGS</div>
+					</div>
+
+					<div className='hwt__main-grid-right'></div>
+				</div>
+			</section>
 			<section className='contact-us'>
 				<h3 className='embryos-problem__header'>Contact us</h3>
 				<div className='contact-us__container'>
