@@ -78,6 +78,12 @@ export const About = () => {
 
 			<section className='our-technology'>
 				<div className='technology-schema'></div>
+				<div className='our-technology__markup-container'>
+					<div className='our-technology__text'>
+						Our <br /> technology
+					</div>
+					<TryDemoButton />
+				</div>
 			</section>
 
 			<section className='hiw'>

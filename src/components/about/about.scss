@@ -82,6 +82,26 @@
   }
 }
 
+.our-technology {
+  position: relative;
+
+  &__markup-container {
+    position: absolute;
+    @include align-justify-center;
+    flex-direction: column;
+    top: 475px;
+    right: 183px;
+  }
+
+  &__text {
+    margin-bottom: 10px;
+    text-align: center;
+    color: $turquoiseWithOpacity;
+    font-size: 24px;
+    font-weight: bold;
+  }
+}
+
 .three-cards {
   margin: 100px 140px 100px;
 
@@ -120,8 +140,6 @@
         color: $pinkTextColor;
       }
     }
-
-
   }
 }
 
@@ -196,7 +214,7 @@
 .technology-schema {
   width: 1238px;
   height: 691px;
-  margin-bottom: 150px;
+  margin-bottom: 50px;
   background-image: url("../../common/assets/icons/technologySchema.svg");
   @include background-position;
 }
