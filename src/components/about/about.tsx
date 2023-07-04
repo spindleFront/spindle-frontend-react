@@ -105,7 +105,34 @@ export const About = () => {
 						<div className='hiw__main-grid-left-footer'>Results validated by NGS</div>
 					</div>
 
-					<div className='hwt__main-grid-right'></div>
+					<div className='hiw__main-grid-right'>
+						<ul className='hiw__main-grid-right__list'>
+							<li className='hiw__main-grid-right__list-item'>
+								<div className='hiw__main-grid-right__list-circle'>1</div>
+								<span className='hiw__main-grid-right__list-text'>
+									Polarizing microscopy can reveal oocytes’ spindles
+								</span>
+							</li>
+							<li className='hiw__main-grid-right__list-item'>
+								<div className='hiw__main-grid-right__list-circle'>2</div>
+								<span className='hiw__main-grid-right__list-text'>
+									Spindles are different between euploid and aneuploid oocytes
+								</span>
+							</li>
+							<li className='hiw__main-grid-right__list-item'>
+								<div className='hiw__main-grid-right__list-circle'>3</div>
+								<span className='hiw__main-grid-right__list-text'>
+									Visual assessment of oocytes’ spindles can predict aneuploidy
+								</span>
+							</li>
+							<li className='hiw__main-grid-right__list-item'>
+								<div className='hiw__main-grid-right__list-circle'>4</div>
+								<span className='hiw__main-grid-right__list-text'>
+									ReSpindle’s AI can automate aneuploidy prediction
+								</span>
+							</li>
+						</ul>
+					</div>
 				</div>
 			</section>
 			<section className='contact-us'>
