@@ -80,8 +80,8 @@ $yellowTextColor: #F5911D;
 }
 
 @mixin solid-circle-size {
-  width: 164px;
-  height: 164px;
+  width: 123px;
+  height: 123px;
 }
 
 @mixin smaller-fonts {
@@ -103,14 +103,14 @@ $yellowTextColor: #F5911D;
   z-index: 100;
   @include circle-radius;
   background-color: $mainBGColor;
-  width: 400px;
-  height: 400px;
+  width: 250px;
+  height: 250px;
   @include align-justify-center;
 }
 
 @mixin gradient-circle($gradient) {
-  width: 258px;
-  height: 258px;
+  width: 162px;
+  height: 162px;
   background: $gradient;
   @include circle-radius;
   @include align-justify-center;
@@ -123,29 +123,20 @@ $yellowTextColor: #F5911D;
 
 @mixin outer-circle {
   position: absolute;
-  top: 24px;
-  left: 28px;
+  top: 18px;
+  left: 15px;
 }
 
-@mixin small-dot($color) {
-  position: absolute;
-  top: 190px;
-  left: 428px;
-  background-color: $color;
-  height: 14px;
-  width: 14px;
-  border-radius: 50%;
-}
 
 @mixin bottom-circle($color) {
   position: absolute;
   z-index: -10;
-  height: 156px;
-  width: 156px;
+  height: 115px;
+  width: 115px;
   border: 1px solid $color;
   border-radius: 50%;
-  top: 641px;
-  left: 116px;
+  top: 410px;
+  left: 70px;
 }
 
 @mixin chevron-typography {

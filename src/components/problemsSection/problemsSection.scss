@@ -1,12 +1,15 @@
 @import '../../common/styles/variables';
 
 .problems-container {
+  padding: 0 190px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 }
 
 .terms-card {
   position: relative;
+  width: fit-content;
+  height: 532px;
 
   &__dark {
     @include dark-circle;
@@ -20,12 +23,26 @@
     @include solid-circle($turquoiseWithOpacity);
   }
 
-  &__outer-circle {
-    @include outer-circle;
+  &__arrow {
+    background-image: url("../../common/assets/icons/arrowForOuterCircle.svg");
+    @include background-position;
+    width: 25px;
+    height: 30px;
+    position: absolute;
+    top: 109.3px;
+    left: 254px;
   }
 
-  &__small-dot {
-    @include small-dot($turquoiseColor);
+  &__outer-circle {
+    @include outer-circle;
+
+    &-draw {
+      border: 4px solid $turquoiseColor;
+      height: 209px;
+      width: 209px;
+      position: absolute;
+      border-radius: 50%;
+    }
   }
 
   &__bottom-circle {
@@ -54,10 +71,6 @@
     @include outer-circle;
   }
 
-  &__small-dot {
-    @include small-dot($numbersColor);
-  }
-
   &__bottom-circle {
     @include bottom-circle($numbersColor)
   }
@@ -82,9 +95,6 @@
     @include outer-circle;
   }
 
-  &__small-dot {
-    @include small-dot($landscapeColor);
-  }
 
   &__bottom-circle {
     @include bottom-circle($landscapeColor)
@@ -94,15 +104,18 @@
 .bottom-chevron {
   position: absolute;
   z-index: -1;
-  height: 430px;
-  width: 320px;
+  height: 300px;
+  width: 210px;
   background-color: $chevronBGColor;
   border-radius: 23px;
-  top: 344px;
-  left: 39px;
+  top: 208px;
+  left: 20px;
   box-sizing: border-box;
-  justify-content: center;
-  padding: 100px 0;
+  text-align: center;
+  color: $whiteColor;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 100px 10px 50px;
 }
 
 .chevron-list {

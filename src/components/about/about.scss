@@ -237,6 +237,8 @@
           color: $whiteColor;
           font-size: 24px;
           font-weight: bold;
+          top: 16px;
+          left: 104px;
         }
       }
     }
@@ -261,17 +263,46 @@
   color: $whiteColor;
 }
 
+.problems {
+  margin-top: 150px;
+  color: $whiteColor;
+
+  &__header {
+    margin-bottom: 50px;
+    padding: 0 190px;
+    font-size: 34px;
+    font-weight: bold;
+  }
+}
+
 .contact-us {
   margin-top: 150px;
 
-  &__container {
-    @include grid-with-two-columns;
+  &__header {
+    margin-bottom: 70px;
   }
 
   &__item {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    text-align: center;
+    margin-top: 70px;
+
+    & > a {
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 34px;
+      color: $whiteColor;
+    }
+  }
+
+  &__googleForm-container {
+    @include align-justify-center;
+  }
+
+  &__googleForm {
+    background-image: url("../../common/assets/icons/googleForm.svg");
+    @include background-position;
+    width: 800px;
+    height: 300px;
   }
 }
 

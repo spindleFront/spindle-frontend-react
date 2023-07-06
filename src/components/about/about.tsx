@@ -2,6 +2,7 @@ import React from 'react';
 import { Header } from '../header';
 import { TryDemoButton } from '../tryDemoButton';
 import './about.scss';
+import { ProblemsSectionMarkup } from '../problemsSection';
 
 export const About = () => {
 	return (
@@ -135,20 +136,22 @@ export const About = () => {
 					</div>
 				</div>
 			</section>
+			<section className='problems'>
+				<div className='problems__header'>
+					ReSpindle is an AI technology that seamlessly integrates into the workflows of assisted
+					reproduction clinics.
+				</div>
+				<ProblemsSectionMarkup />
+			</section>
 			<section className='contact-us'>
 				<h3 className='embryos-problem__header'>Contact us</h3>
 				<div className='contact-us__container'>
 					<div className='contact-us__item'>
-						<a target='_blank' href='https://calendly.com/respindle'>
-							<img
-								alt='calendly-logo'
-								src={require('../../common/assets/icons/calendlyLogo.svg').default}
-							/>
-						</a>
+						<a href='mailto:info@respindle.com'>info@respindle.com</a>
 					</div>
-					<div className='contact-us__item'>
+					<div className='contact-us__googleForm-container'>
 						<a className='google-link' target='_blank' href='https://forms.gle/vEgpfBNBKZDiBSuu9'>
-							Google Form
+							<div className='contact-us__googleForm'></div>
 						</a>
 					</div>
 				</div>

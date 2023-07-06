@@ -41,7 +41,9 @@ export const SignIn = () => {
 	return (
 		<main className='signIn'>
 			<div className='signIn__logo'>
-				<Logo />
+				<Link to={ROUTE_NAMES.HOME}>
+					<Logo />
+				</Link>
 			</div>
 			<div className='signIn__card'>
 				<form onSubmit={handleSubmit(onSubmit)}>
