@@ -1,6 +1,8 @@
 import React from 'react';
 import { SPINDLE_EUPLOIDY } from '../../common/enums/spindleEuploidy';
 import { formatDate } from '../../common/helpers/formatDate';
+import { Link } from 'react-router-dom';
+import { ROUTE_NAMES } from '../../common/enums/routeNames';
 
 export interface OocyteItemProps {
 	initiateDeletion: (oocyteId: string) => void;
@@ -34,32 +36,34 @@ export const OocyteItem: React.FC<OocyteItemProps> = ({
 	};
 	return (
 		<div className='oocytesList__wrap'>
-			<div className='oocytesList__item'>
-				<div
-					style={{
-						backgroundImage: `url(${img})`,
-					}}
-					className='oocytesList__item-image'
-				></div>
-				<div className='oocytesList__item-info'>
-					<div className='oocytesList__item-container'>
-						<div className='oocytesList__icon-1'></div>
-						<div>{patientID}</div>
-					</div>
-					<div className='oocytesList__item-container'>
-						<div className='oocytesList__icon-2'></div>
-						<div>{formatDate(entityDate)}</div>
-					</div>
-					<div className='oocytesList__item-container'>
-						<div className='oocytesList__icon-3'></div>
-						<div>{oocyteId}</div>
-					</div>
-					<div className='oocytesList__item-container'>
-						<div className='oocytesList__icon-4'></div>
-						<div>{oocyteAge}</div>
+			<Link to={{ pathname: ROUTE_NAMES.DETAILS, search: `id=${photoId}` }}>
+				<div className='oocytesList__item'>
+					<div
+						style={{
+							backgroundImage: `url(${img})`,
+						}}
+						className='oocytesList__item-image'
+					></div>
+					<div className='oocytesList__item-info'>
+						<div className='oocytesList__item-container'>
+							<div className='oocytesList__icon-1'></div>
+							<div>{patientID}</div>
+						</div>
+						<div className='oocytesList__item-container'>
+							<div className='oocytesList__icon-2'></div>
+							<div>{formatDate(entityDate)}</div>
+						</div>
+						<div className='oocytesList__item-container'>
+							<div className='oocytesList__icon-3'></div>
+							<div>{oocyteId}</div>
+						</div>
+						<div className='oocytesList__item-container'>
+							<div className='oocytesList__icon-4'></div>
+							<div>{oocyteAge}</div>
+						</div>
 					</div>
 				</div>
-			</div>
+			</Link>
 			<div className='oocytesList__item-footer'>
 				<div
 					className='oocytesList__item-status'

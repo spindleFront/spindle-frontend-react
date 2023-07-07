@@ -11,6 +11,7 @@ import { OocytesList } from '../../components/oocytesList';
 import { EuploidResult } from '../../components/aneuploid';
 import { NoRegistrationUpload } from '../../components/noRegistrationUpload';
 import { NoRegistrationResult } from '../../components/noRegistrationResult';
+import { OocyteDetails } from '../../components/oocyteDetails';
 
 export const ROUTES: RoutesType[] = [
 	{ path: ROUTE_NAMES.UPLOAD, element: <NoRegistrationUpload />, hidden: false },
@@ -59,5 +60,10 @@ export const ROUTES: RoutesType[] = [
 		path: ROUTE_NAMES.UNREGISTERED_RESULT,
 		element: <NoRegistrationResult />,
 		hidden: false,
+	},
+	{
+		path: ROUTE_NAMES.DETAILS,
+		element: <OocyteDetails />,
+		hidden: true,
 	},
 ];

@@ -49,7 +49,9 @@ export const Header = () => {
 			{email && (
 				<div className='header__logged-user-container'>
 					<div className='header__logged-user'>
-						<div className='header__image-container'></div>
+						<Link to={ROUTE_NAMES.OOCYTES_LIST}>
+							<div className='header__image-container'></div>
+						</Link>
 						<div className='header__logged-user-email'>{email}</div>
 					</div>
 					<div className='header__header-button-container'>

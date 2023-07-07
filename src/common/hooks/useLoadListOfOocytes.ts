@@ -1,13 +1,15 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { FormValues } from '../interfaces/FormValues';
 import { getDownloadURL, getStorage, ref } from 'firebase/storage';
 import { collection, getDocs, query } from 'firebase/firestore';
 import { db } from '../../firebase';
 import { useQuery } from '@tanstack/react-query';
 import { queryClient } from '../../index';
+import { FileContext } from '../context/context';
 
 export const useLoadListOfOocytes = (id: string) => {
 	const [oocytesList, setOocytesList] = useState<Partial<FormValues>[] | []>([]);
+	const { setContextOocytesList } = useContext(FileContext);
 	const storage = getStorage();
 
 	const getData = async (): Promise<any> => {
@@ -29,6 +31,7 @@ export const useLoadListOfOocytes = (id: string) => {
 					return [...state, { ...doc.data(), image }];
 				});
 			});
+			setContextOocytesList(oocytesList);
 		}
 	}, [data]);
 

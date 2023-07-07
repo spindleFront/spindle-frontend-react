@@ -6,6 +6,8 @@ export interface FileContextInterface {
 	oocyteData?: Partial<FormValues>;
 	setFile: (prevState: undefined) => void;
 	setOocyteData: (prevState: Partial<FormValues>) => void;
+	contextOocytesList: Partial<FormValues>[] | [];
+	setContextOocytesList: (prevState: Partial<FormValues>[]) => void;
 }
 
 const oocyteData = {
@@ -20,4 +22,6 @@ export const FileContext = createContext<FileContextInterface>({
 	oocyteData,
 	setOocyteData: () => {},
 	setFile: () => {},
+	contextOocytesList: [],
+	setContextOocytesList: () => {},
 });

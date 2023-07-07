@@ -8,5 +8,6 @@ export enum ROUTE_NAMES {
 	OOCYTES_LIST = '/oocytes-list',
 	RESULT = '/result',
 	UNREGISTERED_RESULT = '/unregistered-result',
+	DETAILS = '/details',
 	HOME = '/',
 }

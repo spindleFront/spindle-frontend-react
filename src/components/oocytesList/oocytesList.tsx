@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useContext, useState } from 'react';
 import { Header } from '../header';
 import { useNavigate } from 'react-router-dom';
 import { ROUTE_NAMES } from '../../common/enums/routeNames';
@@ -10,11 +10,13 @@ import { OocyteItem } from './oocyteItem';
 import { deleteObject, getStorage, ref } from 'firebase/storage';
 import { FormValues } from '../../common/interfaces/FormValues';
 import { useLoadListOfOocytes } from '../../common/hooks/useLoadListOfOocytes';
+import { FileContext } from '../../common/context/context';
 import './oocytesList.scss';
 
 export const OocytesList = () => {
 	const id = window.localStorage.getItem('id') || '';
 	const { setOocytesList, oocytesList, isLoading } = useLoadListOfOocytes(id);
+	const { setContextOocytesList } = useContext(FileContext);
 	const [dataForDeletion, setDataForDeletion] = useState<{ id: string; oocyteId: string }>({
 		id: '',
 		oocyteId: '',
@@ -53,23 +55,28 @@ export const OocytesList = () => {
 		setIsVisible(false);
 	}, []);
 
+	const handleItemClick = () => {
+		setContextOocytesList(oocytesList);
+	};
+
 	const renderImages = () => {
 		return (
 			<>
 				{oocytesList.map(
 					({ photoId, oocyteAge, entityDate, patientID, aneuploid, image, oocyteNumber }) => {
 						return (
-							<OocyteItem
-								key={photoId}
-								photoId={photoId || '0'}
-								initiateDeletion={initiateDeletion}
-								oocyteId={oocyteNumber || '0'}
-								oocyteAge={oocyteAge || '0'}
-								img={image || ''}
-								entityDate={entityDate || 0}
-								patientID={patientID || '0'}
-								aneuploid={aneuploid || '0'}
-							/>
+							<div onClick={handleItemClick} key={photoId}>
+								<OocyteItem
+									photoId={photoId || '0'}
+									initiateDeletion={initiateDeletion}
+									oocyteId={oocyteNumber || '0'}
+									oocyteAge={oocyteAge || '0'}
+									img={image || ''}
+									entityDate={entityDate || 0}
+									patientID={patientID || '0'}
+									aneuploid={aneuploid || '0'}
+								/>
+							</div>
 						);
 					}
 				)}

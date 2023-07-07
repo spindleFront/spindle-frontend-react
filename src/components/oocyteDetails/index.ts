@@ -1,0 +1,1 @@
+export { OocyteDetails } from './oocyteDetails';
