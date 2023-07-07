@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Logo } from '../logo';
 import { Input } from '../input';
 import { SubmitHandler, useForm } from 'react-hook-form';
@@ -12,7 +12,23 @@ import './signUp.scss';
 
 export const SignUp = () => {
 	const navigate = useNavigate();
-	const { register, handleSubmit } = useForm<FormValues>();
+	const { register, handleSubmit, watch } = useForm<FormValues>();
+	const email = watch('email');
+	const password = watch('password');
+	const passwordRepeat = watch('passwordRepeat');
+
+	const isPasswordsMatch = useMemo(() => {
+		if (password && passwordRepeat) {
+			return password === passwordRepeat;
+		}
+	}, [password, passwordRepeat]);
+
+	const isEmailEntered = useMemo(() => {
+		if (email) {
+			return email.length > 0;
+		}
+		return false;
+	}, [email]);
 
 	const auth = getAuth(app);
 	const onSubmit: SubmitHandler<FormValues> = (data) =>
@@ -25,9 +41,7 @@ export const SignUp = () => {
 				}
 			})
 			.catch((error) => {
-				// const errorCode = error.code;
-				// const errorMessage = error.message;
-				// ..
+				console.error(error.message);
 			});
 	return (
 		<main className='signUp'>
@@ -49,7 +63,12 @@ export const SignUp = () => {
 						/>
 					</div>
 					<div className='signUp__button-container'>
-						<Button text='Sign Up' type='submit' style='regular' />
+						<Button
+							disabled={!isPasswordsMatch}
+							text='Sign Up'
+							type='submit'
+							style={!isPasswordsMatch || !isEmailEntered ? 'regular' : 'contained'}
+						/>
 					</div>
 				</form>
 			</div>
