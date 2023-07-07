@@ -7,6 +7,10 @@
     justify-content: center;
   }
 
+  &__dynamic-link {
+    text-decoration: none;
+  }
+
   &__addButton {
     @include border;
     width: 300px;

@@ -36,7 +36,10 @@ export const OocyteItem: React.FC<OocyteItemProps> = ({
 	};
 	return (
 		<div className='oocytesList__wrap'>
-			<Link to={{ pathname: ROUTE_NAMES.DETAILS, search: `id=${photoId}` }}>
+			<Link
+				className='oocytesList__dynamic-link'
+				to={{ pathname: ROUTE_NAMES.DETAILS, search: `id=${photoId}` }}
+			>
 				<div className='oocytesList__item'>
 					<div
 						style={{

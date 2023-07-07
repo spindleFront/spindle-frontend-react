@@ -40,7 +40,7 @@ export const OocytesList = () => {
 				// File deleted successfully
 			})
 			.catch((error) => {
-				// Uh-oh, an error occurred!
+				console.error(error.message);
 			});
 
 		await deleteDoc(doc(db, dataForDeletion.id, dataForDeletion.oocyteId));
