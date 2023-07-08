@@ -9,6 +9,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { ROUTE_NAMES } from '../../common/enums/routeNames';
 import { auth } from '../../firebase';
 import { googleAuth } from '../../common/auth/googleAuth/googleAuth';
+import { setUserDataToLocalStorage } from '../../common/helpers/setUserData';
 import './signIn.scss';
 
 export const SignIn = () => {
@@ -21,12 +22,13 @@ export const SignIn = () => {
 				// Signed in
 				const user = userCredential.user;
 				if (user && user.email !== null) {
-					window.localStorage.setItem('user', user.email);
-					window.localStorage.setItem('id', user.uid);
+					setUserDataToLocalStorage(user.email, user.uid);
 					navigate(ROUTE_NAMES.OOCYTES_LIST);
 				}
 			})
-			.catch(() => {});
+			.catch((error) => {
+				console.error(error.message);
+			});
 
 	const onSignUpClick = () => navigate(ROUTE_NAMES.SIGN_UP);
 	const onGoogleAuthClick = () => {

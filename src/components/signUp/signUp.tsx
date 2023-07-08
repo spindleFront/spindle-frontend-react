@@ -8,6 +8,7 @@ import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import { ROUTE_NAMES } from '../../common/enums/routeNames';
 import { app } from '../../firebase';
+import { setUserDataToLocalStorage } from '../../common/helpers/setUserData';
 import './signUp.scss';
 
 export const SignUp = () => {
@@ -39,8 +40,7 @@ export const SignUp = () => {
 			.then((userCredential) => {
 				const user = userCredential.user;
 				if (user && user.email !== null) {
-					window.localStorage.setItem('user', user.email);
-					window.localStorage.setItem('id', user.uid);
+					setUserDataToLocalStorage(user.email, user.uid);
 					navigate(ROUTE_NAMES.OOCYTE_FORM);
 				}
 			})
