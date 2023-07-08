@@ -9,7 +9,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { ROUTE_NAMES } from '../../common/enums/routeNames';
 import { auth } from '../../firebase';
 import { googleAuth } from '../../common/auth/googleAuth/googleAuth';
-import { faceBookLogin } from '../../common/auth/facebookAuth/facebookAuth';
 import './signIn.scss';
 
 export const SignIn = () => {
@@ -34,9 +33,10 @@ export const SignIn = () => {
 		googleAuth(navigate, ROUTE_NAMES.OOCYTE_FORM);
 	};
 
-	const onFacebookAuthClick = () => {
-		faceBookLogin(navigate, ROUTE_NAMES.OOCYTES_LIST);
-	};
+	// Temporary disabled functionality
+	// const onFacebookAuthClick = () => {
+	// 	faceBookLogin(navigate, ROUTE_NAMES.OOCYTES_LIST);
+	// };
 
 	return (
 		<main className='signIn'>
@@ -74,19 +74,22 @@ export const SignIn = () => {
 							</div>
 							<div className='signIn__logo-description'>Sign in with Google</div>
 						</button>
-						<button
-							onClick={onFacebookAuthClick}
-							type='button'
-							className='signIn__social-container-item'
-						>
-							<div className='signIn__logo-container'>
-								<img
-									alt='Google logo'
-									src={require('../../common/assets/icons/facebookLogo.svg').default}
-								/>
-							</div>
-							<div className='signIn__logo-description'>Sign in with Facebook</div>
-						</button>
+
+						{/*temporary disabled function for a facebook registration*/}
+
+						{/*<button*/}
+						{/*	onClick={onFacebookAuthClick}*/}
+						{/*	type='button'*/}
+						{/*	className='signIn__social-container-item'*/}
+						{/*>*/}
+						{/*	<div className='signIn__logo-container'>*/}
+						{/*		<img*/}
+						{/*			alt='Facebook logo'*/}
+						{/*			src={require('../../common/assets/icons/facebookLogo.svg').default}*/}
+						{/*		/>*/}
+						{/*	</div>*/}
+						{/*	<div className='signIn__logo-description'>Sign in with Facebook</div>*/}
+						{/*</button>*/}
 					</div>
 				</form>
 			</div>

@@ -295,23 +295,25 @@
   }
 
   &__googleForm-container {
+    margin-top: 20px;
     @include align-justify-center;
   }
 
   &__googleForm {
-    background-image: url("../../common/assets/icons/googleForm.svg");
+    background-image: url("../../common/assets/icons/googleFormIcon.png");
     @include background-position;
-    width: 300px;
-    height: 100px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
   }
 }
 
 .google-link {
   text-decoration: none;
   white-space: nowrap;
-  display: block;
-  width: 200px;
-  @include flex-align-center;
-  font-size: 84px;
-  color: $brownTextColor;
+  @include align-justify-center;
+  font-size: 34px;
+  font-weight: bold;
+  column-gap: 10px;
+  color: $whiteColor;
 }

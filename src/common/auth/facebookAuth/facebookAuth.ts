@@ -7,6 +7,7 @@ export const faceBookLogin = (navigate: NavigateFunction, location: string) => {
 	signInWithPopup(auth, provider)
 		.then((result) => {
 			const user = result.user;
+
 			if (user && user.email !== null) {
 				window.localStorage.setItem('user', user.email);
 				navigate(location);

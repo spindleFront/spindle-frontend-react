@@ -12,7 +12,8 @@ import './signUp.scss';
 
 export const SignUp = () => {
 	const navigate = useNavigate();
-	const { register, handleSubmit, watch } = useForm<FormValues>();
+	const { register, handleSubmit, watch, getFieldState } = useForm<FormValues>();
+	const { isDirty } = getFieldState('password');
 	const email = watch('email');
 	const password = watch('password');
 	const passwordRepeat = watch('passwordRepeat');
@@ -30,6 +31,8 @@ export const SignUp = () => {
 		return false;
 	}, [email]);
 
+	const isPasswordLongEnough = useMemo(() => isDirty && password.length < 6, [password]);
+
 	const auth = getAuth(app);
 	const onSubmit: SubmitHandler<FormValues> = (data) =>
 		createUserWithEmailAndPassword(auth, data.email, data.password)
@@ -37,6 +40,7 @@ export const SignUp = () => {
 				const user = userCredential.user;
 				if (user && user.email !== null) {
 					window.localStorage.setItem('user', user.email);
+					window.localStorage.setItem('id', user.uid);
 					navigate(ROUTE_NAMES.OOCYTE_FORM);
 				}
 			})
@@ -62,6 +66,9 @@ export const SignUp = () => {
 							placeholder='repeat password'
 						/>
 					</div>
+					{isPasswordLongEnough && (
+						<div className='short-password'>Password should be at least 6 characters</div>
+					)}
 					<div className='signUp__button-container'>
 						<Button
 							disabled={!isPasswordsMatch}

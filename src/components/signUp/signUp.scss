@@ -27,3 +27,11 @@
     @include flex-align-center;
   }
 }
+
+.short-password {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 10px;
+  font-weight: bold;
+  color: $warningColor;
+}

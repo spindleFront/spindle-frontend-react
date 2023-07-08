@@ -152,6 +152,7 @@ export const About = () => {
 					<div className='contact-us__googleForm-container'>
 						<a className='google-link' target='_blank' href='https://forms.gle/vEgpfBNBKZDiBSuu9'>
 							<div className='contact-us__googleForm'></div>
+							<div className='contact-us__googleForm-text'>Google Form</div>
 						</a>
 					</div>
 				</div>
