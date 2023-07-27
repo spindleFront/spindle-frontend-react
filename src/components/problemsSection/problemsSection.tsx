@@ -38,7 +38,7 @@ export const ProblemsSectionMarkup = () => {
 				<div className='terms-card__arrow'></div>
 				<div className='terms-card__small-dot'></div>
 				<div className='bottom-chevron'>
-					<div>Oocytes with low probability of aneuploidy are selected for priority transfer</div>
+					<div> AI analyzes spindles shapes, gives probability of aneuploidy for each oocyte</div>
 				</div>
 				<div className='terms-card__bottom-circle'></div>
 			</div>
@@ -54,7 +54,7 @@ export const ProblemsSectionMarkup = () => {
 				</div>
 				<div className='terms-card__small-dot'></div>
 				<div className='bottom-chevron'>
-					<div>AI analyzes spindles shapes, gives probability of aneuploidy for each oocyte</div>
+					<div>Oocytes with low probability of aneuploidy are selected for priority transfer</div>
 				</div>
 				<div className='terms-card__bottom-circle'></div>
 			</div>
